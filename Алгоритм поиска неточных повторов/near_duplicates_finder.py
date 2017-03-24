@@ -22,9 +22,8 @@ sents = [sent(ngram, line, i) for (i, (ngram, line)) in enumerate(zip(nGrams, te
 
 classes = []
 
-for i in range(len(sents)):
-    curSent = sents[i]
-    if (len(curSent.nGrams) == 0):
+for curSent in sents:
+    if len(curSent.nGrams) == 0:
         continue
     bestOverlap = 0
     bestClass = 0
@@ -46,5 +45,5 @@ with open("result.txt", "w") as file:
         if len(curClass.sents) == 1:
             continue
         file.write("========================= CLASS #%d =============================\n" % i)
-        file.writelines(["%d: %s\n" % (sent.index, sent.text) for sent in curClass.sents])
-        file.write("*****************************************************************\n")
+        file.write('\n'.join(["%d: %s" % (sent.index, sent.text) for sent in curClass.sents]))
+        file.write("\n*****************************************************************\n")
