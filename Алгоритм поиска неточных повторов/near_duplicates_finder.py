@@ -11,26 +11,13 @@ class cl:
         self.sents = z
 
 def intersect(sent1, sent2):
-    ans = []
-    for s in sent1:
-        if (s in sent2):
-            ans.append(s)
-    return ans
+    return [s for s in sent1 if s in sent2]
 
-def add(sent1, sent2):
-    ans = sent2
-    for s in sent1:
-        ans.append(s)
-    return ans
-
-text = simpleAPI2.fileToSents("resources/SVNBook.pxml")
+text = simpleAPI2.fileToSents("resources/sample.txt")
 words = simpleAPI2.sentsToWords(text)
 nGrams = simpleAPI2.wordsToTrigrams(words)
 
-sents = []
-for i in range(len(text)):
-    sents.append(sent(nGrams[i], text[i]))
-
+sents = [sent(ngram, line) for (ngram, line) in zip(nGrams, text)]
 classes = []
 
 for i in range(len(sents)):
@@ -49,7 +36,7 @@ for i in range(len(sents)):
     if bestOverlap < 0.5:
         classes.append(cl(curSent.nGrams, [(curSent, i)]))
     else:
-        classes[bestClass].nGrams = add(curSent.nGrams, classes[bestClass].nGrams)
+        classes[bestClass].nGrams += curSent.nGrams
         classes[bestClass].sents.append((curSent, i))
 
 with open("result.txt", "w") as file:
@@ -58,6 +45,6 @@ with open("result.txt", "w") as file:
             continue
         print("========================= CLASS #" + str(i) + " =============================", file=file)
         for j in range(len(classes[i].sents)):
-            print(str(classes[i].sents[j][1]) + ": ", file=file, sep='', end = '')
+            print(str(classes[i].sents[j][1]), file=file, end=": ")
             print(*classes[i].sents[j][0].text, file=file, sep='')
         print("*****************************************************************", file=file)
