@@ -1,9 +1,10 @@
 import simpleAPI2
 
 class sent:
-    def __init__(self, y, z):
+    def __init__(self, y, z, i):
         self.nGrams = y
         self.text = z
+        self.index = i
 
 class cl:
     def __init__(self, y, z):
@@ -13,11 +14,14 @@ class cl:
 def intersect(sent1, sent2):
     return [s for s in sent1 if s in sent2]
 
-text = simpleAPI2.fileToSents("resources/sample.txt")
+text = simpleAPI2.fileToSents("resources/gazprom-corrected-dluciv.pxml")
 words = simpleAPI2.sentsToWords(text)
 nGrams = simpleAPI2.wordsToTrigrams(words)
 
-sents = [sent(ngram, line) for (ngram, line) in zip(nGrams, text)]
+sents = [sent(ngram, line, 0) for (ngram, line) in zip(nGrams, text)]
+for i in range(len(sents)):
+    sents[i].index = i
+
 classes = []
 
 for i in range(len(sents)):
@@ -34,17 +38,15 @@ for i in range(len(sents)):
             bestOverlap = curOverlap
             bestClass = j
     if bestOverlap < 0.5:
-        classes.append(cl(curSent.nGrams, [(curSent, i)]))
+        classes.append(cl(curSent.nGrams, [curSent]))
     else:
         classes[bestClass].nGrams += curSent.nGrams
-        classes[bestClass].sents.append((curSent, i))
+        classes[bestClass].sents.append(curSent)
 
 with open("result.txt", "w") as file:
-    for i in range(len(classes)):
-        if (len(classes[i].sents) == 1):
+    for (i, curClass) in enumerate(classes):
+        if len(curClass.sents) == 1:
             continue
-        print("========================= CLASS #" + str(i) + " =============================", file=file)
-        for j in range(len(classes[i].sents)):
-            print(str(classes[i].sents[j][1]), file=file, end=": ")
-            print(*classes[i].sents[j][0].text, file=file, sep='')
-        print("*****************************************************************", file=file)
+        file.write("========================= CLASS #%d =============================\n" % i)
+        file.writelines(["%d: %s\n" % (sent.index, sent.text) for sent in curClass.sents])
+        file.write("*****************************************************************\n")
