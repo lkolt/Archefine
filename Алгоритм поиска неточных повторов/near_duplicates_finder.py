@@ -14,13 +14,11 @@ class cl:
 def intersect(sent1, sent2):
     return [s for s in sent1 if s in sent2]
 
-text = simpleAPI2.fileToSents("resources/gazprom-corrected-dluciv.pxml")
+text = simpleAPI2.fileToSents("resources/sample.txt")
 words = simpleAPI2.sentsToWords(text)
 nGrams = simpleAPI2.wordsToTrigrams(words)
 
-sents = [sent(ngram, line, 0) for (ngram, line) in zip(nGrams, text)]
-for i in range(len(sents)):
-    sents[i].index = i
+sents = [sent(ngram, line, i) for (i, (ngram, line)) in enumerate(zip(nGrams, text))]
 
 classes = []
 
