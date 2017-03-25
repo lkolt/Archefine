@@ -44,13 +44,15 @@ def wordsToStemmed(sent: Iterator[str], stemmer) -> List[str]:
 
 
 def fileToSents(filename: str) -> List[str]:
-    with open(filename) as file:
-        try:
-            text = file.read()
-        except:
-            file.close()
-            file = open(filename, encoding='utf-8')
-            text = file.read()
+    def decode(sth: bytes, codings: List[str] = ["utf-8", "cp1251"]) -> str:
+        for coding in codings:
+            try:
+                return sth.decode(encoding=coding)
+            except UnicodeDecodeError:
+                pass
+
+    with open(filename, mode='rb') as file:
+        text = decode(file.read())
         text = re.sub("\s+", ' ', text)  # "hi     man" ~> "hi man"
         return sent_tokenize(text)
 
@@ -74,3 +76,17 @@ def wordsToTrigrams(words: List[List[str]]) -> List[List[Tuple[str, str, str]]]:
 
 if __name__ == "__main__":
     pass
+    """ Usage:
+    >>> sents = fileToSents("resources/drm-internals.txt")
+    >>> words = sentsToWords(sents)
+    >>> trigrams = wordsToTrigrams(words)
+
+    >>> print(words[5])
+    ['subsequ', 'section', 'cover', 'core', 'intern',
+     'detail', 'provid', 'implement', 'note', 'exampl']
+    >>> print(trigrams[5])
+    [('subsequ', 'section', 'cover'), ('section', 'cover', 'core'),
+     ('cover', 'core', 'intern'), ('core', 'intern', 'detail'),
+     ('intern', 'detail', 'provid'), ('detail', 'provid', 'implement'),
+     ('provid', 'implement', 'note'), ('implement', 'note', 'exampl')]
+    """
