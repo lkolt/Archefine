@@ -39,6 +39,10 @@ def remove_stops(seq: Iterator[str]) -> Iterator[str]:
     return remove_sth(seq, stopwords)
 
 
+def wordsToStemmed(sent: Iterator[str]) -> List[str]:
+    return [Sentence.stemmer.stem(word) for word in sent]
+
+
 # Kernel classes
 class Sentence:
     stemmer = Stemmer()
@@ -49,13 +53,9 @@ class Sentence:
         self.words = self.sentToWords()
         self.nGrams = list(trigrams(self.words))
 
-    @staticmethod
-    def wordsToStemmed(sent: Iterator[str]) -> List[str]:
-        return [Sentence.stemmer.stem(word) for word in sent]
-
     def sentToWords(self) -> List[str]:
         # FIXME: remove_stops . remove_puncts ~> remove_sth(_, stops | puncts)
-        return Sentence.wordsToStemmed(
+        return wordsToStemmed(
             remove_stops(
                 remove_puncts(
                     word_tokenize(self.sent))))
@@ -80,7 +80,3 @@ class Text:
             text = decode(file.read())
             text = re.sub("\s+", ' ', text)  # "hi     man" ~> "hi man"
             return sent_tokenize(text)
-
-
-if __name__ == "__main__":
-    pass
