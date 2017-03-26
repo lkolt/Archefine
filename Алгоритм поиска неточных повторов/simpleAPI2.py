@@ -1,4 +1,4 @@
-from typing import Iterator, List, Set, Tuple
+from typing import Iterator, List, Set
 
 from nltk.tokenize import sent_tokenize as nltk_sent_tokenize
 from nltk.corpus import stopwords
@@ -12,6 +12,7 @@ import re
 language = 'russian'.lower()
 removeStops = True  # `= set()` for not removing stopwords
 puncts = set('.,!?')
+default_encodings = ["utf-8", "cp1251"]
 
 
 # language dispatch
@@ -38,55 +39,48 @@ def remove_stops(seq: Iterator[str]) -> Iterator[str]:
     return remove_sth(seq, stopwords)
 
 
-# Translators
-def wordsToStemmed(sent: Iterator[str], stemmer) -> List[str]:
-    return [stemmer.stem(word) for word in sent]
-
-
-def fileToSents(filename: str) -> List[str]:
-    def decode(sth: bytes, codings: List[str] = ["utf-8", "cp1251"]) -> str:
-        for coding in codings:
-            try:
-                return sth.decode(encoding=coding)
-            except UnicodeDecodeError:
-                pass
-
-    with open(filename, mode='rb') as file:
-        text = decode(file.read())
-        text = re.sub("\s+", ' ', text)  # "hi     man" ~> "hi man"
-        return sent_tokenize(text)
-
-
-def sentsToWords(sents: List[str]) -> List[List[str]]:
-    # FIXME: remove_stops . remove_puncts ~> remove_sth(_, stops | puncts)
-    # FIXME: list . map
+# Kernel classes
+class Sentence:
     stemmer = Stemmer()
-    return [
-        wordsToStemmed(
+
+    def __init__(self, index: int, sent: str):
+        self.index = index
+        self.sent = sent
+        self.words = self.sentToWords()
+        self.nGrams = list(trigrams(self.words))
+
+    @staticmethod
+    def wordsToStemmed(sent: Iterator[str]) -> List[str]:
+        return [Sentence.stemmer.stem(word) for word in sent]
+
+    def sentToWords(self) -> List[str]:
+        # FIXME: remove_stops . remove_puncts ~> remove_sth(_, stops | puncts)
+        return Sentence.wordsToStemmed(
             remove_stops(
                 remove_puncts(
-                    word_tokenize(sent))),
-            stemmer) for sent in sents]
+                    word_tokenize(self.sent))))
 
 
-def wordsToTrigrams(words: List[List[str]]) -> List[List[Tuple[str, str, str]]]:
-    # FIXME: list . map
-    return [list(trigrams(sent)) for sent in words]
+class Text:
+    def __init__(self, filename: str):
+        self.encoding = None
+        self.sents = [Sentence(i, sent) for (i, sent) in
+                      enumerate(self.fileToSents(filename))]
+
+    def fileToSents(self, filename: str) -> List[str]:
+        def decode(sth: bytes, codings: List[str] = default_encodings) -> str:
+            for coding in codings:
+                try:
+                    self.encoding = coding
+                    return sth.decode(encoding=coding)
+                except UnicodeDecodeError:
+                    pass
+
+        with open(filename, mode='rb') as file:
+            text = decode(file.read())
+            text = re.sub("\s+", ' ', text)  # "hi     man" ~> "hi man"
+            return sent_tokenize(text)
 
 
 if __name__ == "__main__":
     pass
-    """ Usage:
-    >>> sents = fileToSents("resources/drm-internals.txt")
-    >>> words = sentsToWords(sents)
-    >>> trigrams = wordsToTrigrams(words)
-
-    >>> print(words[5])
-    ['subsequ', 'section', 'cover', 'core', 'intern',
-     'detail', 'provid', 'implement', 'note', 'exampl']
-    >>> print(trigrams[5])
-    [('subsequ', 'section', 'cover'), ('section', 'cover', 'core'),
-     ('cover', 'core', 'intern'), ('core', 'intern', 'detail'),
-     ('intern', 'detail', 'provid'), ('detail', 'provid', 'implement'),
-     ('provid', 'implement', 'note'), ('implement', 'note', 'exampl')]
-    """

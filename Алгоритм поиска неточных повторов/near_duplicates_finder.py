@@ -1,25 +1,17 @@
-import simpleAPI2
+from simpleAPI2 import Text
 
-class sent:
-    def __init__(self, y, z, i):
-        self.nGrams = y
-        self.text = z
-        self.index = i
 
 class cl:
     def __init__(self, y, z):
         self.nGrams = y
         self.sents = z
 
+
 def intersect(sent1, sent2):
     return [s for s in sent1 if s in sent2]
 
-text = simpleAPI2.fileToSents("resources/sample.txt")
-words = simpleAPI2.sentsToWords(text)
-nGrams = simpleAPI2.wordsToTrigrams(words)
-
-sents = [sent(ngram, line, i) for (i, (ngram, line)) in enumerate(zip(nGrams, text))]
-
+text = Text("resources/another random doc.txt")
+sents = text.sents
 classes = []
 
 for curSent in sents:
@@ -40,10 +32,10 @@ for curSent in sents:
         classes[bestClass].nGrams += curSent.nGrams
         classes[bestClass].sents.append(curSent)
 
-with open("result.txt", "w") as file:
+with open("result.txt", "w", encoding=text.encoding) as file:
     for (i, curClass) in enumerate(classes):
         if len(curClass.sents) == 1:
             continue
         file.write("========================= CLASS #%d =============================\n" % i)
-        file.write('\n'.join(["%d: %s" % (sent.index, sent.text) for sent in curClass.sents]))
+        file.write('\n'.join(["%d: %s" % (sent.index, sent.sent) for sent in curClass.sents]))
         file.write("\n*****************************************************************\n")
