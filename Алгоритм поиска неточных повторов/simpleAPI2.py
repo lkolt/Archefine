@@ -75,6 +75,7 @@ class Text:
                     return sth.decode(encoding=coding)
                 except UnicodeDecodeError:
                     pass
+            raise UnicodeDecodeError
 
         with open(filename, mode='rb') as file:
             text = decode(file.read())
