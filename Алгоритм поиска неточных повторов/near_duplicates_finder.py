@@ -37,5 +37,5 @@ with open("result.txt", "w", encoding=text.encoding) as file:
         if len(curClass.sents) == 1:
             continue
         file.write("========================= CLASS #%d =============================\n" % i)
-        file.write('\n'.join(["%d: %s" % (sent.index, sent.sent) for sent in curClass.sents]))
+        file.write('\n'.join(["%d %d: %s" % (sent.start, sent.end, sent.sent) for sent in curClass.sents]))
         file.write("\n*****************************************************************\n")
