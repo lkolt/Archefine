@@ -79,11 +79,11 @@ class Text:
             raise UnicodeDecodeError
 
         with open(filename, mode='rb') as file:
-            text = decode(file.read())
-            text = re.sub("\s+", ' ', text)  # "hi     man" ~> "hi man"
+            text = decode(file.read()).replace('\n', ' ')
+            # text = re.sub("\s+", ' ', text)  # "hi     man" ~> "hi man"
             sents = sent_tokenize(text)
             index = 0
             for (num, sent) in enumerate(sents):
                 index = text.find(sent, index)
-                yield Sentence(num, sent, index, index + len(sent))
+                yield Sentence(num, re.sub("\s+", ' ', sent), index, index + len(sent))
 
