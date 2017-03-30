@@ -35,7 +35,7 @@ for curSent in sents:
         classes[bestClass].sents.append(curSent)
 
 
-with open(name + " result.txt", "w", encoding=text.encoding) as file:
+with open("results/" + name, "w", encoding=text.encoding) as file:
     for (cur, curClass) in enumerate(classes):
         if len(curClass.sents) == 1:
             continue
