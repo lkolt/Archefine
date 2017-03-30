@@ -7,9 +7,6 @@ class cl:
         self.sents = z
 
 
-def intersect(sent1, sent2):
-    return [s for s in sent1 if s in sent2]
-
 name = "DocBook_Definitive_Guide.pxml"
 
 text = Text("resources/" + name)
@@ -21,10 +18,10 @@ for curSent in sents:
         continue
     bestOverlap = 0
     bestClass = 0
-    for j in range(len(classes)):
-        curClass = classes[j]
-        curIntersect = intersect(curSent.nGrams, curClass.nGrams)
-        curOverlap = len(curIntersect) / len(curSent.nGrams)
+    for (j, curClass) in enumerate(classes):
+        curIntersect = curSent.nGrams & curClass.nGrams
+        curOverlap = sum(curIntersect.values()) / sum(curSent.nGrams.values())
+
         if curOverlap > bestOverlap:
             bestOverlap = curOverlap
             bestClass = j

@@ -1,3 +1,4 @@
+from collections import Counter
 from typing import Iterator, List, Set
 
 from nltk.tokenize import sent_tokenize as nltk_sent_tokenize
@@ -50,8 +51,7 @@ class Sentence:
     def __init__(self, index: int, sent: str, start: int, end: int):
         self.index = index
         self.sent = sent
-        self.words = self.sentToWords()
-        self.nGrams = list(trigrams(self.words))
+        self.nGrams = Counter(trigrams(self.sentToWords()))
         self.start = start
         self.end = end
 
