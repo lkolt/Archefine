@@ -1,0 +1,307 @@
+========================= CLASS #1 =============================
+(13) {2323} [2420]: (They aren&#39;t distributed with DocBook because they aren&#39;t maintained by the DocBook TC.
+(1366) {201540} [201598]: That&#39;s because they aren&#39;t maintained by OASIS .
+*****************************************************************
+========================= CLASS #2 =============================
+(14) {2421} [2452]: They&#39;re maintained by ISO.)
+(106) {15819} [15843]: They&#39;re all illegal.
+*****************************************************************
+========================= CLASS #3 =============================
+(19) {2902} [2983]: See http://www.oasis-open.org/cover/topics.html#entities for more information.
+(461) {71194} [71229]: See http://www.gnu.org/copyleft/ .
+*****************************************************************
+========================= CLASS #4 =============================
+(25) {3699} [3919]: This mapping won&#39;t work out of the box for two reasons: first, your tools won&#39;t be able to find it, and second, the mappings for the ISO entity sets probably don&#39;t point to the right place on your system.
+(1117) {166390} [166431]: Informal equations don&#39;t have titles.
+*****************************************************************
+========================= CLASS #5 =============================
+(55) {9234} [9280]: Download and unpack the Jade distribution.
+(78) {11776} [11828]: Download and unpack the stylesheet distribution .
+*****************************************************************
+========================= CLASS #6 =============================
+(80) {12135} [12228]: If not, and the preceding test succeeded, something has gone wrong contact the maintainer .
+(82) {12403} [12496]: If not, and the preceding test succeeded, something has gone wrong contact the maintainer .
+*****************************************************************
+========================= CLASS #7 =============================
+(119) {17923} [18248]: The result will be something like this: Case-Sensitivity case sensitivity DocBook SGML declaration elements case sensitivity (DocBook) attributes case sensitivity (DocBook) XML case sensitivity With the standard DocBook declaration, DocBook instances are not case-sensitive with respect to element and attribute names.
+(841) {123277} [123488]: elements case sensitivity (DocBook) case sensitivity elements (DocBook) attributes case sensitivity (DocBook) case sensitivity attributes (DocBook) DocBook element and attribute names are not case-sensitive.
+*****************************************************************
+========================= CLASS #8 =============================
+(128) {19101} [19474]: Para element PARA vs. (XML) The result will be something like this: No #CONREF Attributes #CONREF attributes Startref attribute IndexTerm element OtherTerm attribute GlossSee element GlossSeeAlso element empty tags #CONREF attributes The StartRef attribute on indexterm and the OtherTerm attribute on GlossSee and GlossSeeAlso are #CONREF attributes.
+(164) {25486} [25518]: No #CONREF attributes allowed.
+*****************************************************************
+========================= CLASS #9 =============================
+(236) {37162} [37290]: References and Technical Notes on the Web Entity Management OASIS Technical Resolution 9401:1997 (Amendment 2 to TR 9401) .
+(938) {139343} [139415]: See OASIS Technical Resolution 9401:1997 (Amendment 2 to TR 9401).
+*****************************************************************
+========================= CLASS #10 =============================
+(240) {37499} [37590]: Exchange Table Model Document Type Definition OASIS Technical Resolution TR 9503:1995 .
+(241) {37592} [37765]: Table Model Document Type Definition OASIS Technical Memorandum TM 9502:1995 XML Exchange Table Model Document Type Definition OASIS Technical Memorandum TM 9901:1999 .
+*****************************************************************
+========================= CLASS #11 =============================
+(248) {38232} [38308]: The Specification The W3C technical recommendation that defines 1.0.
+(249) {38309} [38386]: Namespaces in The W3C technical recommendation that defines namespaces.
+*****************************************************************
+========================= CLASS #12 =============================
+(263) {40265} [40384]: For a list of recent of tools, check out Robin Cover&#39;s / page at OASIS : http://www.oasis-open.org/cover .
+(264) {40387} [40450]: For a list of tools, check out .com: http://www.xml.com/ .
+*****************************************************************
+========================= CLASS #13 =============================
+(265) {40453} [40550]: $Date: 2003-06-04 16:22:51 +0400 (Ср, 04 июн 2003) $ $Revision: 2902 $ What&#39;s on the CD-ROM ?
+(535) {78612} [78635]: What&#39;s on the CD ?
+*****************************************************************
+========================= CLASS #14 =============================
+(295) {43541} [43672]: Did you use any markup features of the that have been flagged as obsolete (to be removed at the next major version of DocBook)?
+(364) {48694} [48734]: Did you use any processing instructions?
+*****************************************************************
+========================= CLASS #15 =============================
+(296) {43673} [43691]: If so, which ones?
+(314) {44725} [44743]: If so, which ones?
+*****************************************************************
+========================= CLASS #16 =============================
+(303) {44047} [44102]: Did you use the supplied declaration or another one?
+(311) {44540} [44573]: Did you use the SUBDOC feature?
+*****************************************************************
+========================= CLASS #17 =============================
+(312) {44575} [44661]: If so, how did you manage the name spaces of their ID s, if you managed them at all?
+(337) {46745} [46756]: If so, how?
+*****************************************************************
+========================= CLASS #18 =============================
+(328) {45819} [45885]: If you used the Lang common attribute, why, and to what effect?
+(329) {45886} [45953]: If you used the Remap common attribute, why, and to what effect?
+(330) {45954} [46020]: If you used the Role common attribute, why, and to what effect?
+*****************************************************************
+========================= CLASS #19 =============================
+(332) {46106} [46206]: What values did you give to the Label attribute and how are they to be interpreted for rendering?
+(333) {46207} [46334]: What values did you give to the Mark and Override attributes for lists and how are they to be interpreted for rendering?
+*****************************************************************
+========================= CLASS #20 =============================
+(371) {49042} [53356]: DocBook Quick Reference DocBook V3.1 Element Brief Description Abbrev Abstract Accel Ackno Acronym Action Address Affiliation Alt Anchor Answer Appendix Application Area AreaSet AreaSpec Arg ArtHeader ArtPageNums Article Attribution AudioData AudioObject Author AuthorBlurb AuthorGroup AuthorInitials BeginPage BiblioDiv BiblioEntry BiblioMSet BiblioMisc BiblioMixed BiblioSet Bibliography BlockQuote Book BookBiblio BookInfo BridgeHead CO Callout CalloutList Caption Caution Chapter Citation CiteRefEntry CiteTitle City ClassName CmdSynopsis ColSpec Collab CollabName Colophon Command Comment ComputerOutput ConfDates ConfGroup ConfNum ConfSponsor ConfTitle Constant ContractNum ContractSponsor Contrib Copyright CorpAuthor CorpName Country Database Date Dedication DocInfo Edition Editor Email Emphasis EnVar Entry EntryTbl Epigraph Equation ErrorCode ErrorName ErrorType Example Fax Figure Filename FirstName FirstTerm Footnote FootnoteRef ForeignPhrase FormalPara FuncDef FuncParams FuncPrototype FuncSynopsis FuncSynopsisInfo Function GUIButton GUIIcon GUILabel GUIMenu GUIMenuItem GUISubmenu GlossDef GlossDiv GlossEntry GlossList GlossSee GlossSeeAlso GlossTerm Glossary Graphic GraphicCO Group Hardware Highlights Holder Honorific ISBN ISSN ITermSet ImageData ImageObject ImageObjectCO Important Index IndexDiv IndexEntry IndexTerm InformalEquation InformalExample InformalFigure InformalTable InlineEquation InlineGraphic InlineMediaObject Interface InterfaceDefinition InvPartNumber IssueNum ItemizedList JobTitle KeyCap KeyCode KeyCombo KeySym Keyword KeywordSet LegalNotice LineAnnotation Lineage Link ListItem Literal LiteralLayout LoT LoTentry ManVolNum Markup MediaLabel MediaObject MediaObjectCO Member MenuChoice ModeSpec MouseButton Msg MsgAud MsgEntry MsgExplan MsgInfo MsgLevel MsgMain MsgOrig MsgRel MsgSet MsgSub MsgText Note OLink ObjectInfo Option Optional OrderedList OrgDiv OrgName OtherAddr OtherCredit OtherName POB PageNums Para ParamDef Parameter Part PartIntro Phone Phrase Postcode Preface Primary PrimaryIE PrintHistory Procedure ProductName ProductNumber ProgramListing ProgramListingCO Prompt Property PubDate Publisher PublisherName PubsNumber QandADiv QandAEntry QandASet Question Quote RefClass RefDescriptor RefEntry RefEntryTitle RefMeta RefMiscInfo RefName RefNameDiv RefPurpose RefSect1 RefSect1Info RefSect2 RefSect2Info RefSect3 RefSect3Info RefSynopsisDiv RefSynopsisDivInfo Reference ReleaseInfo Replaceable ReturnValue RevHistory RevNumber RevRemark Revision Row SBR SGMLTag Screen ScreenCO ScreenInfo ScreenShot Secondary SecondaryIE Sect1 Sect1Info Sect2 Sect2Info Sect3 Sect3Info Sect4 Sect4Info Sect5 Sect5Info Section SectionInfo See SeeAlso SeeAlsoIE SeeIE Seg SegListItem SegTitle SegmentedList SeriesInfo SeriesVolNums Set SetIndex SetInfo ShortAffil Shortcut Sidebar SimPara SimpleList SimpleSect SpanSpec State Step Street StructField StructName SubSteps Subject SubjectSet SubjectTerm Subscript Subtitle Superscript Surname Symbol SynopFragment SynopFragmentRef Synopsis SystemItem TBody TFoot TGroup THead Table Term Tertiary TertiaryIE TextObject Tip Title TitleAbbrev ToC ToCback ToCchap ToCentry ToCfront ToClevel1 ToClevel2 ToClevel3 ToClevel4 ToClevel5 ToCpart Token Trademark Type ULink UserInput VarArgs VarListEntry VarName VariableList VideoData VideoObject Void VolumeNum Warning WordAsWord XRef Year DocBook V4.1.2 All of the elements in DocBook V3.1 except ArtHeader BookBiblio Comment DocInfo InterfaceDefinition SeriesInfo plus the following additional elements: Element Brief Description appendixinfo articleinfo bibliographyinfo chapterinfo classsynopsis classsynopsisinfo constructorsynopsis destructorsynopsis exceptionname fieldsynopsis glossaryinfo indexinfo initializer interfacename methodname methodparam methodsynopsis modifier ooclass ooexception oointerface partinfo prefaceinfo refentryinfo referenceinfo remark revdescription setindexinfo sidebarinfo simplemsgentry DocBook EBNF Module V1.0 The following elements in addition to the elements in the version of DocBook to which this module is added: Element Brief Description constraint constraintdef lhs nonterminal production productionrecap productionset rhs DocBook HTML Forms Module V1.0 The HTML Forms Module adds the HTML Form element and related elements.
+(538) {78737} [78782]: A Quick Reference to the elements in DocBook.
+*****************************************************************
+========================= CLASS #21 =============================
+(427) {64360} [64635]: In any section entitled &quot;Acknowledgements&quot; or &quot;Dedications&quot;, preserve the section&#39;s title, and preserve in the section all the substance and tone of each of the contributor acknowledgements and/or dedications given therein.
+(430) {64837} [64897]: Delete any section entitled &quot;Endorsements&quot;.
+*****************************************************************
+========================= CLASS #22 =============================
+(466) {72091} [72453]: Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free Documentation License, Version 1.1 or any later version published by the Free Software Foundation; with the Invariant Sections being LIST THEIR TITLES, with the Front-Cover Texts being LIST, and with the Back-Cover Texts being LIST.
+(2300) {339353} [339613]: Portions Copyright © 1999-2003 O&#39;Reilly Media, Inc. Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free Documentation License, Version 1.1 or any later version published by the Free Software Foundation.
+*****************************************************************
+========================= CLASS #23 =============================
+(467) {72461} [72569]: A copy of the license is included in the section entitled &quot;GNU Free Documentation License&quot;.
+(2301) {339615} [339654]: A copy of the license is included in .
+*****************************************************************
+========================= CLASS #24 =============================
+(472) {73262} [73375]: Version 2.0.14: Changes since version 2.0.12 (2005-04-18) I forgot to update the ChangeLog for version 2.0.13.
+(475) {73537} [73650]: Version 2.0.12: Changes since version 2.0.10 (2004-05-19) I forgot to update the ChangeLog for version 2.0.11.
+*****************************************************************
+========================= CLASS #25 =============================
+(473) {73376} [73428]: That&#39;s the difference between 2.0.13 and 2.0.14.
+(476) {73651} [73703]: That&#39;s the difference between 2.0.11 and 2.0.12.
+(568) {82833} [82858]: That&#39;s covered here.
+(570) {82946} [82985]: That&#39;s covered in the next chapter.
+*****************************************************************
+========================= CLASS #26 =============================
+(474) {73430} [73536]: This change log is slightly abbreviated; there were hundreds of uninteresting changes to generated files.
+(477) {73705} [73811]: This change log is slightly abbreviated; there were hundreds of uninteresting changes to generated files.
+*****************************************************************
+========================= CLASS #27 =============================
+(496) {75663} [75696]: How to publish DocBook documents.
+(523) {77799} [77832]: How to publish DocBook documents.
+*****************************************************************
+========================= CLASS #28 =============================
+(528) {78223} [78265]: A reference guide to the DocBook elements.
+(529) {78266} [78318]: A reference guide to the DocBook parameter entities.
+*****************************************************************
+========================= CLASS #29 =============================
+(579) {83968} [84017]: is an example of a markup language defined in .
+(771) {112933} [113000]: Like , DocBook is an example of a markup language defined in / .
+*****************************************************************
+========================= CLASS #30 =============================
+(590) {85348} [85453]: Nevertheless, it&#39;s not unreasonable to do your authoring in and your online publishing in or .
+(591) {85454} [85526]: By the same token, it&#39;s not unreasonable to do your authoring in .
+*****************************************************************
+========================= CLASS #31 =============================
+(607) {88405} [88717]: In DocBook, a top-level section is sect1 , so the title of a top-level section named My First-Level Header would be identified like this: &lt;sect1&gt;&lt;title&gt;My First-Level Header&lt;/title&gt; Note the following features of this markup: Clarity A title begins with title and ends with title .
+(632) {92168} [92840]: This is valid: &lt;sect1&gt;&lt;title&gt;...&lt;/title&gt; &lt;sect2&gt;&lt;title&gt;...&lt;/title&gt; &lt;sect3&gt;&lt;title&gt;...&lt;/title&gt; ... &lt;/sect3&gt; &lt;/sect2&gt; &lt;/sect1&gt; This is not: &lt;sect1&gt;&lt;title&gt;...&lt;/title&gt; &lt;sect3&gt;&lt;title&gt;...&lt;/title&gt; ... &lt;/sect3&gt; &lt;/sect1&gt; parsers validating validation SGML documents DTDs validating SGML documents against instance (DocBook document) Because an / document has an associated that describes the valid, logical structures of the document, you can test the logical structure of any particular document against the .
+*****************************************************************
+========================= CLASS #32 =============================
+(647) {95188} [95373]: For example, as we write this book, we don&#39;t know exactly how O&#39;Reilly will choose to present chapter headings, bulleted lists, terms, or any of the other semantic features.
+(648) {95374} [95397]: And we don&#39;t care.
+*****************************************************************
+========================= CLASS #33 =============================
+(679) {99542} [99619]: In , this is written as &lt;xref/&gt; , as we&#39;ll see in the section .
+(1597) {236077} [236152]: Stylesheets may consist of multiple specifications, as we&#39;ll see in .
+*****************************************************************
+========================= CLASS #34 =============================
+(819) {118722} [118784]: The following sections describe the features of the prologue.
+(872) {128346} [128409]: The following sections describe the features of the prologue.
+*****************************************************************
+========================= CLASS #35 =============================
+(828) {120439} [120547]: This identifies the that will be used by the document and what the root element of the document will be.
+(879) {129374} [129569]: elements root element root element document type declaration The document type declaration identifies the that will be used by the document and what the root element of the document will be.
+*****************************************************************
+========================= CLASS #36 =============================
+(831) {121038} [121616]: An Internal Subset internal subset SGML document declarations It&#39;s also possible to provide additional declarations in a document by placing them in the document type declaration: &lt;!DOCTYPE book PUBLIC &quot;-//OASIS//DTD DocBook V3.1//EN&quot; [ &lt;!ENTITY nwalsh &quot;Norman Walsh&quot;&gt; &lt;!ENTITY chap1 SYSTEM &quot;chap1.sgm&quot;&gt; &lt;!ENTITY chap2 SYSTEM &quot;chap2.sgm&quot;&gt; ]&gt; external subset SGML document declarations public identifiers SGML system identifiers SGML These declarations form what is known as the internal subset .
+(836) {122169} [122801]: The Document (or Root) Element elements root element root element placement Although comments and processing instructions may occur between the document type declaration and the root element, the root element usually immediately follows the document type declaration: &lt;!DOCTYPE book PUBLIC &quot;-//OASIS//DTD DocBook V3.1//EN&quot; [ &lt;!ENTITY nwalsh &quot;Norman Walsh&quot;&gt; &lt;!ENTITY chap1 SYSTEM &quot;chap1.sgm&quot;&gt; &lt;!ENTITY chap2 SYSTEM &quot;chap2.sgm&quot;&gt; ]&gt; &lt;book&gt; &amp;chap1; &amp;chap2; &lt;/book&gt; You cannot place the root element of the document in an external entity.
+(884) {130477} [131227]: An Internal Subset declarations document type declaration XML document type declaration internal subset internal subset XML document type declarations XML document type declarations internal subset It&#39;s also possible to provide additional declarations in a document by placing them in the document type declaration: &lt;?xml version=&#39;1.0&#39;?&gt; &lt;!DOCTYPE book PUBLIC &quot;-//Norman Walsh//DTD DocBk XML V3.1.4/EN&quot; &quot;http://nwalsh.com/docbook/xml/3.1.4/db3xml.dtd&quot; [ &lt;!ENTITY nwalsh &quot;Norman Walsh&quot;&gt; &lt;!ENTITY chap1 SYSTEM &quot;chap1.sgm&quot;&gt; &lt;!ENTITY chap2 SYSTEM &quot;chap2.sgm&quot;&gt; ]&gt; These declarations form what is known as the internal subset.
+(889) {131811} [132588]: The Document (or Root) Element root element elements root element Although comments and processing instructions may occur between the document type declaration and the root element, the root element usually immediately follows the document type declaration: &lt;?xml version=&#39;1.0&#39;?&gt; &lt;!DOCTYPE book PUBLIC &quot;-//Norman Walsh//DTD DocBk XML V3.1.4//EN&quot; &quot;http://nwalsh.com/docbook/xml/3.1.4/db3xml.dtd&quot; [ &lt;!ENTITY nwalsh &quot;Norman Walsh&quot;&gt; &lt;!ENTITY chap1 SYSTEM &quot;chap1.sgm&quot;&gt; &lt;!ENTITY chap2 SYSTEM &quot;chap2.sgm&quot;&gt; ]&gt; &lt;book&gt;...&lt;/book&gt; The important point is that the root element must be physically present immediately after the document type declaration.
+(890) {132589} [132662]: You cannot place the root element of the document in an external entity.
+(1032) {153341} [154130]: So, if you&#39;ve got a book that consists of three chapters and two appendixes, you might create a file called book.sgm , which looks like this: &lt;!DOCTYPE book PUBLIC &quot;-//OASIS//DTD DocBook V3.1//EN&quot; [ &lt;!ENTITY chap1 SYSTEM &quot;chap1.sgm&quot;&gt; &lt;!ENTITY chap2 SYSTEM &quot;chap2.sgm&quot;&gt; &lt;!ENTITY chap3 SYSTEM &quot;chap3.sgm&quot;&gt; &lt;!ENTITY appa SYSTEM &quot;appa.sgm&quot;&gt; &lt;!ENTITY appb SYSTEM &quot;appb.sgm&quot;&gt; ]&gt; &lt;book&gt;&lt;title&gt;My First Book&lt;/title&gt; &amp;chap1; &amp;chap2; &amp;chap3; &amp;appa; &amp;appb; &lt;/book&gt; declarations document type declaration document type declaration divisions of documents You can then write the chapters and appendixes conveniently in separate files.
+(1405) {210030} [210924]: What I mean by that is that an parser reads a stream of bytes: &quot;&lt;&quot; &quot;?&quot; &quot;x&quot; &quot;m&quot; &quot;l&quot; &quot; &quot; &quot;v&quot; &quot;e&quot; ... &quot;&lt;&quot; &quot;!&quot; &quot;D&quot; &quot;O&quot; &quot;C&quot; &quot;T&quot; &quot;Y&quot; &quot;P&quot; &quot;E&quot; &quot; &quot; &quot;b&quot; &quot;o&quot; &quot;o&quot; &quot;k&quot; ... &quot;&lt;&quot; &quot;b&quot; &quot;o&quot; &quot;o&quot; &quot;k&quot; &quot; &quot; &quot;i&quot; &quot;d&quot; &quot;=&quot; &quot;&#39;&quot; &quot;f&quot; &quot;o&quot; &quot;o&quot; &quot;&#39;&quot; &quot;&gt;&quot; ... &quot;&lt;&quot; &quot;/&quot; &quot;b&quot; &quot;o&quot; &quot;o&quot; &quot;k&quot; &quot;&gt;&quot; interprets them as a stream of characters (which may change the interpretation of some sequences of bytes) and constructs some representation of the document.
+*****************************************************************
+========================= CLASS #37 =============================
+(832) {121617} [121795]: The declarations stored in the file referenced by the public or system identifier in the DOCTYPE declaration is called the external subset and it is technically optional.
+(885) {131228} [131403]: The declarations stored in the file referenced by the public or system identifier in the DOCTYPE declaration is called the external subset, which is technically optional.
+*****************************************************************
+========================= CLASS #38 =============================
+(833) {121797} [121945]: It is legal to put the in the internal subset and to have no external subset, but for a as large as DocBook that wouldn&#39;t make much sense.
+(886) {131405} [131554]: It is legal to put the in the internal subset and to have no external subset, but for a as large as DocBook, that would make very little sense.
+*****************************************************************
+========================= CLASS #39 =============================
+(834) {121948} [122085]: parsing order The internal subset is parsed first and, if multiple declarations for an entity occur, the first declaration is used.
+(887) {131557} [131726]: parsing order XML document declarations The internal subset is parsed first in and, if multiple declarations for an entity occur, the first declaration is used.
+*****************************************************************
+========================= CLASS #40 =============================
+(835) {122086} [122168]: Declarations in the internal subset override declarations in the external subset.
+(888) {131728} [131810]: Declarations in the internal subset override declarations in the external subset.
+*****************************************************************
+========================= CLASS #41 =============================
+(837) {122802} [123032]: Typing an Document Emacs text editor vi text editor SGML text editors, entering through text editors SGML, entering If you are entering using a text editor such as Emacs or vi , there are a few things to keep in mind.
+(891) {132663} [132808]: Typing an Document text editors If you are entering using a text editor such as Emacs or vi , there are a few things to keep in mind.
+*****************************************************************
+========================= CLASS #42 =============================
+(840) {123200} [123274]: Using a structured text editor designed for hides most of these issues.
+(892) {132810} [132884]: Using a structured text editor designed for hides most of these issues.
+*****************************************************************
+========================= CLASS #43 =============================
+(847) {124390} [124628]: straight single quotes (attribute values) straight double quotes (attribute values) curly quotes (attribute values) When quoting attribute values, you can use either a straight single quote (&#39;), or a straight double quote (&quot;).
+(896) {133206} [133354]: quotes attribute values When quoting attribute values, you can use either a straight single quote (&#39;), or a straight double quote (&quot;).
+*****************************************************************
+========================= CLASS #44 =============================
+(848) {124630} [124695]: Don&#39;t use the curly quotes ( and ) in your editing tool.
+(897) {133356} [133421]: Don&#39;t use the curly quotes ( and ) in your editing tool.
+*****************************************************************
+========================= CLASS #45 =============================
+(852) {125155} [125287]: For example: &lt;para&gt; This is &lt;emphasis&gt;important&lt;/&gt;: never stick the tines of a fork in an electrical outlet.
+(860) {126180} [126364]: The null end tag (net) minimization feature allows constructions like this: &lt;para&gt; This is &lt;emphasis/important/: never stick the tines of a fork in an electrical outlet.
+*****************************************************************
+========================= CLASS #46 =============================
+(856) {125715} [125885]: For the record, if you encounter an empty start tag, the parser uses the element that ended last: &lt;para&gt; This is &lt;emphasis&gt;important&lt;/emphasis&gt;.
+(857) {125887} [125923]: So is &lt;&gt;this&lt;/emphasis&gt;.
+(1444) {216541} [216621]: &lt;emphasis&gt;Emphasized&lt;/emphasis&gt; words should be printed in italics.
+*****************************************************************
+========================= CLASS #47 =============================
+(899) {133535} [133556]: XML question marks (?
+(914) {135650} [135667]: question marks (?
+*****************************************************************
+========================= CLASS #48 =============================
+(900) {133556} [133675]: ), processing instructions Processing instructions in begin and end with a question mark: &lt;?pitarget data?&gt; .
+(915) {135667} [135862]: ), processing instructions (XML) processing instructions XML documents XML processing instructions Processing instructions in begin and end with a question mark: &lt;?pitarget data?&gt; .
+*****************************************************************
+========================= CLASS #49 =============================
+(913) {135535} [135647]: In , the trailing slash is not present, so some of our examples need slight revisions to be valid elements.
+(916) {135864} [135984]: In , the trailing question mark is not present, so some of our examples need slight revisions to be valid elements.
+*****************************************************************
+========================= CLASS #50 =============================
+(1082) {161855} [162002]: Inline elements are used to mark up data such as cross references, filenames, commands, options, subscripts and superscripts, and glossary terms.
+(1135) {168837} [168886]: Inline elements are used to mark up running text.
+*****************************************************************
+========================= CLASS #51 =============================
+(1087) {162511} [162559]: There are attributes to control the marks used.
+(1089) {162613} [162670]: There are attributes to control the type of enumeration.
+*****************************************************************
+========================= CLASS #52 =============================
+(1214) {173588} [173610]: Symbol element Token .
+(1240) {174591} [174613]: Symbol element Token .
+*****************************************************************
+========================= CLASS #53 =============================
+(1215) {173611} [173631]: Token element Type .
+(1241) {174614} [174634]: Token element Type .
+*****************************************************************
+========================= CLASS #54 =============================
+(1283) {182573} [182842]: You put a singular index marker where the subject it refers to actually occurs in your text: &lt;para&gt; The tiger&lt;indexterm&gt; &lt;primary&gt;Big Cats&lt;/primary&gt; &lt;secondary&gt;Tigers&lt;/secondary&gt;&lt;/indexterm&gt; is a very large cat indeed.
+(1291) {183599} [184044]: Here&#39;s the previous tiger example recast as starting and ending index terms: &lt;para&gt; The tiger&lt;indexterm id=&quot;tiger-desc&quot; class=&quot;startofrange&quot;&gt; &lt;primary&gt;Big Cats&lt;/primary&gt; &lt;secondary&gt;Tigers&lt;/secondary&gt;&lt;/indexterm&gt; is a very large cat indeed &lt;/para&gt; &lt;para&gt; So much for tigers&lt;indexterm startref=&quot;tiger-desc&quot; class=&quot;endofrange&quot;&gt;.
+*****************************************************************
+========================= CLASS #55 =============================
+(1316) {188253} [189148]: For instance, if you have this markup in your document: &lt;glossterm linkend=&quot;xml&quot;&gt;Extensible Markup Language&lt;/glossterm&gt; is a new standard glossaries example your glossary might look like this: &lt;!DOCTYPE glossary PUBLIC &quot;-//OASIS//DTD DocBook V3.1//EN&quot;&gt; &lt;glossary&gt;&lt;title&gt;Example Glossary&lt;/title&gt; &lt;glossdiv&gt;&lt;title&gt;E&lt;/title&gt; &lt;glossentry id=&quot;xml&quot;&gt;&lt;glossterm&gt;Extensible Markup Language&lt;/glossterm&gt; &lt;acronym&gt;XML&lt;/acronym&gt; &lt;glossdef&gt; &lt;para&gt;Some reasonable definition here.&lt;/para&gt; &lt;glossseealso otherterm=&quot;sgml&quot;&gt; &lt;/glossdef&gt; &lt;/glossentry&gt; &lt;/glossdiv&gt; Note that the GlossTerm tag reappears in the glossary to mark up the term and distinguish it from its definition within the GlossEntry .
+(1653) {245942} [246212]: Consider the following book: &lt;book&gt;&lt;title&gt;A Test Book&lt;/title&gt; &lt;preface&gt; &lt;para&gt;There are three chapters in this book: &lt;xref linkend=&quot;c1&quot;&gt;, &lt;xref linkend=&quot;c2&quot;&gt;, and &lt;xref linkend=&quot;c3&quot;&gt;.
+*****************************************************************
+========================= CLASS #56 =============================
+(1320) {189660} [191174]: Here&#39;s an example of a raw bibliographical item, wrapped in the Biblioentry element: &lt;biblioentry xreflabel=&quot;Kites75&quot;&gt; &lt;authorgroup&gt; &lt;author&gt;&lt;firstname&gt;Andrea&lt;/firstname&gt;&lt;surname&gt;Bahadur&lt;/surname&gt;&lt;/author&gt; &lt;author&gt;&lt;firstname&gt;Mark&lt;/&gt;&lt;surname&gt;Shwarek&lt;/&gt;&lt;/author&gt; &lt;/authorgroup&gt; &lt;copyright&gt;&lt;year&gt;1974&lt;/year&gt;&lt;year&gt;1975&lt;/year&gt; &lt;holder&gt;Product Development International Holding N. V.&lt;/holder&gt; &lt;/copyright&gt; &lt;isbn&gt;0-88459-021-6&lt;/isbn&gt; &lt;publisher&gt; &lt;publishername&gt;Plenary Publications International, Inc.&lt;/publishername&gt; &lt;/publisher&gt; &lt;title&gt;Kites&lt;/title&gt; &lt;subtitle&gt;Ancient Craft to Modern Sport&lt;/subtitle&gt; &lt;pagenums&gt;988-999&lt;/pagenums&gt; &lt;seriesinfo&gt; &lt;title&gt;The Family Creative Workshop&lt;/title&gt; &lt;seriesvolnums&gt;1-22&lt;/seriesvolnums&gt; &lt;editor&gt; &lt;firstname&gt;Allen&lt;/firstname&gt; &lt;othername role=middle&gt;Davenport&lt;/othername&gt; &lt;surname&gt;Bragdon&lt;/surname&gt; &lt;contrib&gt;Editor in Chief&lt;/contrib&gt; &lt;/editor&gt; &lt;/seriesinfo&gt; &lt;/biblioentry&gt; The raw data in a Biblioentry is comprehensive to a fault there are enough fields to suit a host of different bibliographical styles, and that is the point.
+(1323) {191581} [191787]: It even includes punctuation between the fields of data: &lt;bibliomixed&gt; &lt;bibliomset relation=article&gt; &lt;surname&gt;Walsh&lt;/surname&gt;, &lt;firstname&gt;Norman&lt;/firstname&gt;.
+(1325) {191876} [192071]: &lt;/bibliomset&gt; &lt;bibliomset relation=journal&gt; &lt;title&gt;The World Wide Web Journal&lt;/title&gt; &lt;volumenum&gt;2&lt;/volumenum&gt;&lt;issuenum&gt;1&lt;/issuenum&gt;.
+(1327) {192234} [192297]: &lt;pubdate&gt;Winter, 1996&lt;/pubdate&gt;&lt;/bibliomset&gt;.
+*****************************************************************
+========================= CLASS #57 =============================
+(1375) {203337} [204513]: [n:\dbtdg]nsgmls -sv -c \share\sgml\catalog examples\errs\misspell2.sgm m:\jade\nsgmls.exe:I: SP version &quot;1.3.2&quot; m:\jade\nsgmls.exe:examples\errs\misspell2.sgm:2:35:E: end tag for element &quot;TITEL&quot; which is not open m:\jade\nsgmls.exe:examples\errs\misspell2.sgm:3:5:E: document type does not allow element &quot;PARA&quot; here; missing one of &quot;FOOTNOTE&quot;, &quot;MSGTEXT&quot; start-tag m:\jade\nsgmls.exe:examples\errs\misspell2.sgm:9:5:E: document type does not allow element &quot;PARA&quot; here; missing one of &quot;FOOTNOTE&quot;, &quot;MSGTEXT&quot; start-tag m:\jade\nsgmls.exe:examples\errs\misspell2.sgm:15:5:E: document type does not allow element &quot;PARA&quot; here; missing one of &quot;FOOTNOTE&quot;, &quot;MSGTEXT&quot; start-tag m:\jade\nsgmls.exe:examples\errs\misspell2.sgm:21:9:E: end tag for &quot;TITLE&quot; omitted, but OMITTAG NO was specified m:\jade\nsgmls.exe:examples\errs\misspell2.sgm:2:9: start tag was here m:\jade\nsgmls.exe:examples\errs\misspell2.sgm:21:9:E: end tag for &quot;CHAPTER&quot; which is not finished These are pretty easy to spot as well, but look at how confused the parser became.
+(1380) {205056} [205763]: [n:\dbtdg]nsgmls -sv -c \share\sgml\catalog examples\errs\badstarttag.sgm m:\jade\nsgmls.exe:I: SP version &quot;1.3.2&quot; m:\jade\nsgmls.exe:examples\errs\badstarttag.sgm:9:12:E: document type does not allow element &quot;TITLE&quot; here; missing one of &quot;CALLOUTLIST&quot;, &quot;SEGMENTEDLIST&quot;, &quot;VARIABLELIST&quot;, &quot;CAUTION&quot;, &quot;IMPORTANT&quot;, &quot;NOTE&quot;, &quot;TIP&quot;, &quot;WARNING&quot;, &quot;BLOCKQUOTE&quot;, &quot;EQUATION&quot;, &quot;EXAMPLE&quot;, &quot;FIGURE&quot;, &quot;TABLE&quot; start-tag titles formal elements errors paragraphs titles In this example, we probably wanted a FormalPara , so that we could have a title on the paragraph.
+(1386) {206248} [206994]: [n:\dbtdg]nsgmls -sv -c \share\sgml\catalog examples\errs\noendtag.sgm m:\jade\nsgmls.exe:I: SP version &quot;1.3.2&quot; m:\jade\nsgmls.exe:examples\errs\noendtag.sgm:14:5:E: document type does not allow element &quot;PARA&quot; here; missing one of &quot;FOOTNOTE&quot;, &quot;MSGTEXT&quot;, &quot;CAUTION&quot;, &quot;IMPORTANT&quot;, &quot;NOTE&quot;, &quot;TIP&quot;, &quot;WARNING&quot;, &quot;BLOCKQUOTE&quot;, &quot;INFORMALEXAMPLE&quot; start-tag m:\jade\nsgmls.exe:examples\errs\noendtag.sgm:20:9:E: end tag for &quot;PARA&quot; omitted, but OMITTAG NO was specified m:\jade\nsgmls.exe:examples\errs\noendtag.sgm:9:0: start tag was here In this case, the parser figured out that the best thing it could do is end the paragraph.
+*****************************************************************
+========================= CLASS #58 =============================
+(1436) {215411} [215723]: DSSSL DSSSL Document Style Semantics and Specification Language DSSSL ISO standards DSSSL International Organization for Standardization ISO Entity Sets; ISO standards Next, the International Organization for Standardization ( ISO ) created DSSSL , the Document Style Semantics and Specification Language.
+(1460) {218525} [218603]: The acronym stands for Document Style Semantics and Specification Language .
+*****************************************************************
+========================= CLASS #59 =============================
+(1446) {216886} [217010]: The element in the FOSI that controls the presentation of specific elements is the e-i-c (element in context) element.
+(1453) {217646} [217766]: The element in the XSL stylesheet that controls the presentation of specific elements is the xsl:template element.
+*****************************************************************
+========================= CLASS #60 =============================
+(1533) {228206} [228301]: (attribute-string &quot; attr &quot; nd ) Returns the value of the attr attribute of nd .
+(1534) {228304} [228410]: (inherited-attribute-string &quot; attr &quot; nd ) Returns the value of the attr attribute of nd .
+*****************************************************************
+========================= CLASS #61 =============================
+(1583) {234232} [234558]: A common use of let is within a define expression: (define (cals-rule-default nd) (let* ((table (ancestor &quot;table&quot; nd)) (frame (if (attribute-string &quot;frame&quot; table) (attribute-string &quot;frame&quot; table) &quot;all&quot;))) (equal?
+(1584) {234559} [234654]: frame &quot;all&quot;))) This function creates two local variables table and frame .
+*****************************************************************
+========================= CLASS #62 =============================
+(1631) {240494} [240859]: Customizing the Stylesheets DSSSL stylesheets customizing customizing DSSSL stylesheets driver files DSSSL stylsheets, customizing The best way to customize the stylesheets is to write your own driver file; this is a stylesheet that contains your local modifications and then includes the appropriate stylesheet from the standard distribution by reference.
+(1946) {285728} [285834]: Writing your own driver Another approach to customizing the stylesheets is to write your own driver file.
+*****************************************************************
+========================= CLASS #63 =============================
+(1633) {241015} [242064]: Writing Your Own Driver A basic driver file looks like this: &lt;!DOCTYPE style-sheet PUBLIC &quot;-//James Clark//DTD DSSSL Style Sheet//EN&quot; [ &lt;!ENTITY dbstyle PUBLIC &quot;-//Norman Walsh//DOCUMENT DocBook Print Stylesheet//EN&quot; CDATA DSSSL&gt; ]&gt; &lt;style-sheet&gt; &lt;style-specification use=&quot;docbook&quot;&gt; &lt;style-specification-body&gt; ;; your changes go here... &lt;/style-specification-body&gt; &lt;/style-specification&gt; &lt;external-specification id=&quot;docbook&quot; document=&quot;dbstyle&quot;&gt; &lt;/style-sheet&gt; public identifiers Modular DocBook Stylesheets Modular DocBook Stylesheets public identifiers There are two public identifiers associated with the Modular DocBook Stylesheets: -//Norman Walsh//DOCUMENT DocBook Print Stylesheet//EN -//Norman Walsh//DOCUMENT DocBook HTML Stylesheet//EN printing stylesheets HTML stylesheets selecting catalog files Open (SGML) The former selects the print stylesheet and the latter selects the stylesheet.
+(1650) {244694} [245386]: The following driver makes German the default language: &lt;!DOCTYPE style-sheet PUBLIC &quot;-//James Clark//DTD DSSSL Style Sheet//EN&quot; [ &lt;!ENTITY dbstyle PUBLIC &quot;-//Norman Walsh//DOCUMENT DocBook Print Stylesheet//EN&quot; CDATA DSSSL&gt; ]&gt; &lt;style-sheet&gt; &lt;style-specification use=&quot;docbook&quot;&gt; &lt;style-specification-body&gt; (define %default-language% &quot;dege&quot;) &lt;/style-specification-body&gt; &lt;/style-specification&gt; &lt;external-specification id=&quot;docbook&quot; document=&quot;dbstyle&quot;&gt; &lt;/style-sheet&gt; %gentext-language% There are two other settings that can be changed only in a driver.
+*****************************************************************
+========================= CLASS #64 =============================
+(1644) {243493} [243552]: summarizes the language codes for the supported languages.
+(1649) {244635} [244693]: summarizes the language codes for the supported languages.
+*****************************************************************
+========================= CLASS #65 =============================
+(1646) {243613} [244529]: French language chapter, example The following chapter uses text generated in French: &lt;chapter lang=&quot;fr&quot;&gt;&lt;title&gt;B tises&lt;/title&gt; &lt;para&gt;Pierre qui roule n&#39;amasse pas de mousse.&lt;/para&gt; &lt;/chapter&gt; DocBook Stylesheet Language Codes Language Code Language af Afrikaans ca Catalan cs Czech da Danish de German el Greek en English es Spanish et Estonian eu Basque fi Finnish fr French he Hebrew hu Hungarian id Indonesian it Italian ja Japanese ko Korean nl Dutch nn Nyorsk no Norwegian pl Polish pt Portuguese pt-br Portuguese (Brazil) ro Romanian ru Russian sk Slovak sl Slovenian sv Swedish th Thai tr Turkish uk Ukranian xh Xhosa zh-cn Chinese (Continental) zh-tw Chinese (Traditional) Changing the default language languages default, changing driver files language, changing default If no lang attribute is specified, the default language is used.
+(1654) {246214} [246690]: &lt;/para&gt; &lt;/preface&gt; &lt;chapter lang=&quot;usen&quot;&gt;&lt;title&gt;English&lt;/title&gt; ... &lt;/chapter&gt; &lt;chapter lang=&quot;fr&quot;&gt;&lt;title&gt;French&lt;/title&gt; ... &lt;/chapter&gt; &lt;chapter lang=&quot;dege&quot;&gt;&lt;title&gt;Deutsch&lt;/title&gt; ... &lt;/chapter&gt; &lt;/book&gt; The standard stylesheets render the Preface as something like this: There are three chapters in this book: Chapter 1, Chapter 2, and Chapter 3.
+*****************************************************************
+========================= CLASS #66 =============================
+(1844) {272957} [273050]: You generate HTML from your DocBook files by applying the HTML version of the stylesheets.
+(1873) {276290} [276395]: You generate formatting objects from your DocBook files by applying the fo version of the stylesheets.
+*****************************************************************
+========================= CLASS #67 =============================
+(1846) {273144} [273307]: That is the master stylesheet file that uses &lt;xsl:include&gt; to pull in the component files it needs to assemble a complete stylesheet for producing HTML.
+(1875) {276485} [276662]: That is the master stylesheet file that uses &lt;xsl:include&gt; to pull in the component files it needs to assemble a complete stylesheet for producing formatting objects.
+(1893) {279141} [279191]: Of the two, &lt;xsl:include&gt; is the simpler.
+*****************************************************************
+========================= CLASS #68 =============================
+(1998) {293236} [293572]: Consider the following fragment: &lt;!ENTITY % dbpool SYSTEM &quot;dbpool.mod&quot;&gt; &lt;!ENTITY % dbhier SYSTEM &quot;dbhier.mod&quot;&gt; %dbpool; %dbhier; This line declares the parameter entity dbpool and associates it with the file dbpool.mod .
+(1999) {293573} [293670]: This line declares the parameter entity dbhier and associates it with the file dbhier.mod .
+*****************************************************************
+========================= CLASS #69 =============================
+(2052) {299772} [299969]: If you want to add a new kind of something (a new kind of list or a new kind of verbatim environment, for example), you generally want to add the name of the new element to the appropriate class.
+(2082) {305587} [305625]: Suppose you want to add MethodName ?
+*****************************************************************
+========================= CLASS #70 =============================
+(2161) {318736} [318816]: This placeholder is controlled by the intermod.redecl.module marked section.
+(2163) {318955} [319033]: This placeholder is controlled by the dbpool.redecl.module marked section.
+(2165) {319168} [319246]: This placeholder is controlled by the dbhier.redecl.module marked section.
+(2167) {319329} [319408]: This placeholder is controlled by the dbhier.redecl2.module marked section.
+*****************************************************************
+========================= CLASS #71 =============================
+(2162) {318817} [318954]: rdbpool %rdbpool.mod parameter entity Inserted in the middle of dbpool.mod , between the *.class and *.mix entity declarations.
+(2164) {319034} [319167]: rdbhier %rdbhier parameter entity Inserted in the middle of dbhier.mod , between the *.class and *.mix entity declarations.
+*****************************************************************
+========================= CLASS #72 =============================
+(2248) {330568} [330991]: external subset external subset document type declaration external subset public identifiers external subset system identifiers external subset declarations document type declaration Element, attribute, and other declarations that compose (part of) a document type definition that are stored in an external entity, and referenced from a document&#39;s document type declaration using a public or system identifier.
+(2262) {333224} [333504]: internal subset internal subset document type declaration internal subset declarations document type declaration Element, attribute, and other declarations that compose (part of) a document type definition that are stored in a document, within the document type declaration.
+*****************************************************************
+========================= CLASS #73 =============================
+(2302) {339655} [340052]: Nutshell Handbook, the Nutshell Handbook logo, and the O&#39;Reilly logo are registered trademarks of O&#39;Reilly Media, Inc. The association between the image of a duck and the topic of DocBook is a trademark of O&#39;Reilly Media, Inc. Java and all Java-based trademarks and logos are trademarks or registered trademarks of Sun Microsystems, Inc., in the United States and other countries.
+(2303) {340053} [340114]: O&#39;Reilly Media, Inc. is independent of Sun Microsystems.
+*****************************************************************

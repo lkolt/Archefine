@@ -86,4 +86,3 @@ class Text:
             for (num, sent) in enumerate(sents):
                 index = text.find(sent, index)
                 yield Sentence(num, re.sub("\s+", ' ', sent), index, index + len(sent))
-

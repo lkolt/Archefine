@@ -10,7 +10,9 @@ class cl:
 def intersect(sent1, sent2):
     return [s for s in sent1 if s in sent2]
 
-text = Text("resources/another random doc.txt")
+name = "DocBook_Definitive_Guide.pxml"
+
+text = Text("resources/" + name)
 sents = text.sents
 classes = []
 
@@ -32,10 +34,13 @@ for curSent in sents:
         classes[bestClass].nGrams += curSent.nGrams
         classes[bestClass].sents.append(curSent)
 
-with open("result.txt", "w", encoding=text.encoding) as file:
-    for (i, curClass) in enumerate(classes):
+
+cur = 0
+with open(name + " result.txt", "w", encoding=text.encoding) as file:
+    for curClass in classes:
         if len(curClass.sents) == 1:
             continue
-        file.write("========================= CLASS #%d =============================\n" % i)
-        file.write('\n'.join(["%d %d: %s" % (sent.start, sent.end, sent.sent) for sent in curClass.sents]))
+        cur += 1
+        file.write("========================= CLASS #%d =============================\n" % cur)
+        file.write('\n'.join(["(%d) {%d} [%d]: %s" % (sent.index, sent.start, sent.end, sent.sent) for sent in curClass.sents]))
         file.write("\n*****************************************************************\n")
