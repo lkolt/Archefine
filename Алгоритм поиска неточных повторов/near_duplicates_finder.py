@@ -35,12 +35,10 @@ for curSent in sents:
         classes[bestClass].sents.append(curSent)
 
 
-cur = 0
 with open(name + " result.txt", "w", encoding=text.encoding) as file:
-    for curClass in classes:
+    for (cur, curClass) in enumerate(classes):
         if len(curClass.sents) == 1:
             continue
-        cur += 1
         file.write("========================= CLASS #%d =============================\n" % cur)
         file.write('\n'.join(["(%d) {%d} [%d]: %s" % (sent.index, sent.start, sent.end, sent.sent) for sent in curClass.sents]))
         file.write("\n*****************************************************************\n")
