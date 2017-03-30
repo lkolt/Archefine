@@ -47,11 +47,13 @@ def wordsToStemmed(sent: Iterator[str]) -> List[str]:
 class Sentence:
     stemmer = Stemmer()
 
-    def __init__(self, index: int, sent: str):
+    def __init__(self, index: int, sent: str, start: int, end: int):
         self.index = index
         self.sent = sent
         self.words = self.sentToWords()
         self.nGrams = list(trigrams(self.words))
+        self.start = start
+        self.end = end
 
     def sentToWords(self) -> List[str]:
         # FIXME: remove_stops . remove_puncts ~> remove_sth(_, stops | puncts)
@@ -64,8 +66,7 @@ class Sentence:
 class Text:
     def __init__(self, filename: str):
         self.encoding = None
-        self.sents = [Sentence(i, sent) for (i, sent) in
-                      enumerate(self.fileToSents(filename))]
+        self.sents = list(self.fileToSents(filename))
 
     def fileToSents(self, filename: str) -> List[str]:
         def decode(sth: bytes, codings: List[str] = default_encodings) -> str:
@@ -78,6 +79,10 @@ class Text:
             raise UnicodeDecodeError
 
         with open(filename, mode='rb') as file:
-            text = decode(file.read())
-            text = re.sub("\s+", ' ', text)  # "hi     man" ~> "hi man"
-            return sent_tokenize(text)
+            text = decode(file.read()).replace('\n', ' ')
+            # text = re.sub("\s+", ' ', text)  # "hi     man" ~> "hi man"
+            sents = sent_tokenize(text)
+            index = 0
+            for (num, sent) in enumerate(sents):
+                index = text.find(sent, index)
+                yield Sentence(num, re.sub("\s+", ' ', sent), index, index + len(sent))
