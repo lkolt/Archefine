@@ -10,7 +10,7 @@ import re
 
 
 # This can be varied
-language = 'russian'.lower()
+language = 'russian'.lower()  # FIXME PLIZZZZZ
 removeStops = True  # `= set()` for not removing stopwords
 puncts = set('.,!?')
 default_encodings = ["utf-8", "cp1251"]
@@ -40,8 +40,16 @@ def remove_stops(seq: Iterator[str]) -> Iterator[str]:
     return remove_sth(seq, stopwords)
 
 
-def wordsToStemmed(sent: Iterator[str]) -> List[str]:
+def words_to_stemmed(sent: Iterator[str]) -> List[str]:
     return [Sentence.stemmer.stem(word) for word in sent]
+
+
+def word_to_stemmed(word):
+    return Stemmer().stem(word)
+
+
+def is_stop_word(word):
+    return word in stopwords
 
 
 # Kernel classes
@@ -51,13 +59,14 @@ class Sentence:
     def __init__(self, index: int, sent: str, start: int, end: int):
         self.index = index
         self.sent = sent
-        self.nGrams = Counter(trigrams(self.sentToWords()))
+        self.words = remove_puncts(word_tokenize(sent))
+        self.nGrams = Counter(trigrams(self.sent_to_words()))
         self.start = start
         self.end = end
 
-    def sentToWords(self) -> List[str]:
+    def sent_to_words(self) -> List[str]:
         # FIXME: remove_stops . remove_puncts ~> remove_sth(_, stops | puncts)
-        return wordsToStemmed(
+        return words_to_stemmed(
             remove_stops(
                 remove_puncts(
                     word_tokenize(self.sent))))
@@ -66,9 +75,9 @@ class Sentence:
 class Text:
     def __init__(self, filename: str, analyzer):
         self.encoding = None
-        self.sents = list(self.fileToSents(filename, analyzer))
+        self.sents = list(self.file_to_sents(filename, analyzer))
 
-    def fileToSents(self, filename: str, analyzer) -> List[str]:
+    def file_to_sents(self, filename: str, analyzer) -> List[str]:
         def decode(sth: bytes, codings: List[str] = default_encodings) -> str:
             for coding in codings:
                 try:
@@ -87,6 +96,6 @@ class Text:
             for (num, sent) in enumerate(sents):
                 index = text.find(sent, index)
                 yield Sentence(num, re.sub("\s+", ' ', sent), index, index + len(sent))
-                analyzer.setProgress(20 * num / sz)
-                if (analyzer.stop == True):
+                analyzer.set_progress(20 * num / sz)
+                if analyzer.stop:
                     return

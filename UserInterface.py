@@ -4,7 +4,8 @@ from NDF import near_duplicates_finder as ndf
 import threading
 import time
 
-class But_analyzer:
+
+class UserInterface:
     def __init__(self):
         self.but = Button(root)
         self.but["text"] = "Choose"
@@ -12,7 +13,7 @@ class But_analyzer:
         self.but.pack()
         self.cancel = Button(root)
         self.cancel["text"] = "Cancel"
-        self.cancel.bind("<Button-1>", self.Stop)
+        self.cancel.bind("<Button-1>", self.stop)
         self.cancel.pack()
         self.mpb = ttk.Progressbar(root, orient="horizontal", length=200, mode="determinate")
         self.mpb.pack()
@@ -21,21 +22,24 @@ class But_analyzer:
         self.isWork = False
         self.curID = 0
 
-    def setProgressBar(self):
-        last = self.analyzer.getID()
-        while ((self.isWork == True) & (last == self.analyzer.getID())):
+    def set_progress_bar(self):
+        last = self.analyzer.get_id()
+        while self.isWork & (last == self.analyzer.get_id()):
             Tk.update(root)
-            progress = self.analyzer.getProgress()
+            progress = self.analyzer.get_progress()
             self.mpb["value"] = progress
             time.sleep(0.1)
 
-    def doAnalyze(self):
-        print("WORKER: " + str(self.analyzer.getID()) + " ended with " + str(self.analyzer.work()))
-        self.mpb["value"] = 0
-        if self.isWork == True:
-            self.mpb["value"] = 100
-        self.isWork = False
-        self.but["state"] = "normal"
+    def do_analyze(self):
+        last = self.analyzer.get_id()
+        result = self.analyzer.work()
+        print("WORKER: " + str(self.analyzer.get_id()) + " ended with " + str(result))
+        if self.analyzer.get_id() == last:
+            self.mpb["value"] = 0
+            if self.isWork:
+                self.mpb["value"] = 100
+            self.isWork = False
+            self.but["state"] = "normal"
 
     def worker(self, event):
         if self.but["state"] == "disabled":
@@ -45,20 +49,18 @@ class But_analyzer:
         self.curID += 1
         self.but["state"] = "disabled"
         self.isWork = True
-        th1 = threading.Thread(target = self.doAnalyze)
-        th2 = threading.Thread(target = self.setProgressBar)
+        th1 = threading.Thread(target=self.do_analyze)
+        th2 = threading.Thread(target=self.set_progress_bar)
         th2.start()
         th1.start()
 
-    def Stop(self, event):
+    def stop(self, event):
         if self.isWork == True:
             self.isWork = False
-            self.analyzer.Stop()
-
-
+            self.analyzer.stop()
 
 root = Tk()
 root.geometry('500x400+300+200')
-obj = But_analyzer()
+obj = UserInterface()
 
 root.mainloop()
