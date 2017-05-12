@@ -10,7 +10,7 @@ import re
 
 
 # This can be varied
-language = 'russian'.lower()  # FIXME PLIZZZZZ
+language = 'english'.lower()  # FIXME: language detect
 removeStops = True  # `= set()` for not removing stopwords
 puncts = set('.,!?')
 default_encodings = ["utf-8", "cp1251"]
@@ -27,16 +27,16 @@ else:
 
 
 # Remove unnecessary tokens
-def remove_sth(seq: Iterator[str], sth: Set[str]) -> Iterator[str]:
+def remove_sth(seq: Iterator[str], sth: Set[str]) -> List[str]:
     """ Generic function for removal """
-    return filter(lambda x: x not in sth, seq)
+    return [x for x in seq if x not in sth]
 
 
-def remove_puncts(seq: Iterator[str]) -> Iterator[str]:
+def remove_puncts(seq: Iterator[str]) -> List[str]:
     return remove_sth(seq, puncts)
 
 
-def remove_stops(seq: Iterator[str]) -> Iterator[str]:
+def remove_stops(seq: Iterator[str]) -> List[str]:
     return remove_sth(seq, stopwords)
 
 
@@ -75,7 +75,7 @@ class Sentence:
 class Text:
     def __init__(self, filename: str, analyzer):
         self.encoding = None
-        self.sents = list(self.file_to_sents(filename, analyzer))
+        self.sents = self.file_to_sents(filename, analyzer)
 
     def file_to_sents(self, filename: str, analyzer) -> List[str]:
         def decode(sth: bytes, codings: List[str] = default_encodings) -> str:
@@ -90,12 +90,15 @@ class Text:
         with open(filename, mode='rb') as file:
             text = decode(file.read()).replace('\n', ' ')
             # text = re.sub("\s+", ' ', text)  # "hi     man" ~> "hi man"
-            sents = sent_tokenize(text)
-            index = 0
-            sz = len(sents)
-            for (num, sent) in enumerate(sents):
-                index = text.find(sent, index)
-                yield Sentence(num, re.sub("\s+", ' ', sent), index, index + len(sent))
-                analyzer.set_progress(20 * num / sz)
-                if analyzer.stop:
-                    return
+        sents = sent_tokenize(text)
+        index = 0
+        sz = len(sents)
+        lst = list()
+        for (num, sent) in enumerate(sents):
+            index = text.find(sent, index)
+            lst.append(Sentence(num, re.sub("\s+", ' ', sent), index, index + len(sent)))
+            analyzer.set_progress(20 * num / sz)
+            if analyzer.stop:
+                return
+
+        return lst

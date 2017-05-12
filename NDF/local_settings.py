@@ -14,7 +14,7 @@ number = 0
 ####
 All = 1508139
 ####
-with open('Linux_Kernel_Documentation.pxml resultClear.txt', 'r', encoding = 'utf-8') as file:
+with open('Results\Zend_Manual.nocode.pxml result.txt', 'r', encoding = 'utf-8') as file:
     for line in file:
         if re.fullmatch("========================= CLASS #\d+ =============================\n", line):
             classes += 1
