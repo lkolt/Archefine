@@ -28,15 +28,19 @@ def get_key(item):
 
 
 class StatisticCollector:
-    def __init__(self):
+    def __init__(self, lang):
         self.size = int(1e5 + 7)
         self.table = []
         self.count_different_words = 0
         self.count_words = 0
         self.count_stop_words = 0
+        self.language = lang
         self.popular_word = [0, ""]
         for i in range(self.size):
             self.table.append(Node("", set(), 0))
+
+    def set_text(self, text):
+        self.text = text
 
     def update(self):
         if self.count_words * 2 > self.size:
@@ -70,21 +74,21 @@ class StatisticCollector:
         pos = self.get_pos(word)
         if self.table[pos].count == 0:
             self.count_different_words += 1
-        if simpleAPI2.is_stop_word(word):
+        if self.text.is_stop_word(word):
             self.count_stop_words += num
         self.count_words += num
         self.table[pos].word = word
         self.table[pos].count += num
-        if (self.table[pos].count > self.popular_word[0]) & (not simpleAPI2.is_stop_word(word)) & (word.isalpha()):
+        if (self.table[pos].count > self.popular_word[0]) and (not self.text.is_stop_word(word)) and (word.isalpha()):
             self.popular_word = [self.table[pos].count, self.table[pos].word]
 
     def add_form(self, word):
-        init_form = simpleAPI2.word_to_stemmed(word)
+        init_form = self.text.word_to_stemmed(word)
         pos = self.get_pos(init_form)
         self.table[pos].forms.add(word)
 
     def get_forms(self, word):
-        init_form = simpleAPI2.word_to_stemmed(word)
+        init_form = self.text.word_to_stemmed(word)
         pos = self.get_pos(init_form)
         return self.table[pos].forms
 
@@ -157,14 +161,15 @@ class NearDuplicatesFinder:
 
 
 class Analyzer:
-    def __init__(self, path, ID):
+    def __init__(self, path, ID, lang):
         self.name = path
         self.progress = 0
         self.stop = False
         self.ID = ID
         self.ndf = NearDuplicatesFinder()
-        self.stc = StatisticCollector()
+        self.stc = StatisticCollector(lang)
         self.text = []
+        self.language = lang
 
     def get_id(self):
         return self.ID
@@ -193,6 +198,7 @@ class Analyzer:
             return 1
 
         self.text = simpleAPI2.Text(self.name, self)
+        self.stc.set_text(self.text)
         sents = self.text.sents
         sentences_size = len(sents)
 
@@ -206,5 +212,5 @@ class Analyzer:
             self.ndf.add_sent(curSent)
             self.progress = 20 + 75 * i / sentences_size
 
-        self.stc.statistic()
+            # self.stc.statistic()
         return self.ndf.print_classes(self.text.encoding, self)

@@ -24,10 +24,8 @@ class ContextFinder:
         ans = []
 
         for cur_sent in self.analyzer.text.sents:
-            for cur_word in cur_sent.words:
-                if word == cur_word:
-                    ans.append(cur_sent)
-                    break
+            if word in cur_sent.words:
+                ans.append(cur_sent)
 
         fnd = TextReviewer.Reviewer()
         threading.Thread(target=fnd.start)  # WHY NOT START?

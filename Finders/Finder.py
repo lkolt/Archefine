@@ -2,6 +2,8 @@ from tkinter.filedialog import *
 from Finders import WordFormFinder
 from Finders import ContextFinder
 from Finders import WordCountFinder
+from threading import *
+from TextReviwer import TextReviewer
 
 
 class FinderForm:
@@ -26,6 +28,11 @@ class FinderForm:
         self.context_finder.bind("<Button-1>", self.button_context_finder)
         self.context_finder.pack()
 
+        self.open_text = Button(self.root)
+        self.open_text["text"] = "Open all text"
+        self.open_text.bind("<Button-1>", self.button_open_text)
+        self.open_text.pack()
+
         self.root.mainloop()
 
     def button_form_finder(self, event):
@@ -36,3 +43,8 @@ class FinderForm:
 
     def button_context_finder(self, event):
         ContextFinder.ContextFinder(self.analyzer)
+
+    def button_open_text(self, event):
+        fnd = TextReviewer.Reviewer()
+        Thread(target=fnd.start)  # WHY NOT START?
+        fnd.insert_sent(self.analyzer.text.sents)

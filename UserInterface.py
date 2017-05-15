@@ -22,6 +22,12 @@ class UserInterface:
         self.but.bind("<Button-1>", self.worker)
         self.but.pack()
 
+        self.radio_button = IntVar()
+        self.radio_button.set(1)
+
+        Radiobutton(root, text="Russian", variable=self.radio_button, value=1).pack(anchor=W)
+        Radiobutton(root, text="English", variable=self.radio_button, value=2).pack(anchor=W)
+
         self.cancel = Button(root)
         self.cancel["text"] = "Cancel"
         self.cancel.bind("<Button-1>", self.stop)
@@ -76,7 +82,7 @@ class UserInterface:
             return
         op = askopenfilename()
         self.work_with_results["state"] = "disabled"
-        self.analyzer = ndf.Analyzer(op, self.curID)
+        self.analyzer = ndf.Analyzer(op, self.curID, self.radio_button.get())
         self.curID += 1
         self.but["state"] = "disabled"
         self.isWork = True
