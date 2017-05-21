@@ -34,8 +34,8 @@ def remove_sth(seq: List[str], sth: Set[str]) -> List[str]:
 
 # Kernel classes
 class Sentence:
-    def __init__(self, index: int, sent: str, start: int, end: int, lang: LangDiff):
-        self.lang = lang
+    def __init__(self, index: int, sent: str, start: int, end: int, lang: int):
+        self.lang = LangDiff(lang)
         self.index = index
         self.sent = sent
         self.words = self.remove_puncts(self.lang.word_tokenize(sent))
@@ -44,7 +44,6 @@ class Sentence:
         self.end = end
 
     def sent_to_words(self) -> List[str]:
-        # FIXME: remove_stops . remove_puncts ~> remove_sth(_, stops | puncts)
         return self.words_to_stemmed(
             self.remove_stops(
                 self.remove_puncts(
@@ -63,6 +62,7 @@ class Sentence:
 class Text:
     def __init__(self, filename: str, analyzer):
         self.encoding = None
+        self.language = analyzer.language
         self.lang = LangDiff(analyzer.language)
         self.sents = self.file_to_sents(filename, analyzer)
 
@@ -85,7 +85,7 @@ class Text:
         lst = list()
         for (num, sent) in enumerate(sents):
             index = text.find(sent, index)
-            lst.append(Sentence(num, re.sub("\s+", ' ', sent), index, index + len(sent), self.lang))
+            lst.append(Sentence(num, re.sub("\s+", ' ', sent), index, index + len(sent), self.language))
             analyzer.set_progress(20 * num / sz)
             if analyzer.stop:
                 return

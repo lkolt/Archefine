@@ -115,6 +115,9 @@ class StatisticCollector:
     def get_count_stop_words(self):
         return self.count_stop_words
 
+    def get_count_diff_words(self):
+        return self.count_different_words
+
     def statistic(self):
         print("Number words: " + str(self.count_words))
         print("Number different words: " + str(self.count_different_words))
@@ -170,6 +173,7 @@ class Analyzer:
         self.stc = StatisticCollector(lang)
         self.text = []
         self.language = lang
+        self.state = 0
 
     def get_id(self):
         return self.ID
@@ -183,6 +187,9 @@ class Analyzer:
     def get_most_popular_word(self):
         return self.stc.get_most_popular_word()
 
+    def get_count_diff_words(self):
+        return self.stc.get_count_diff_words()
+
     def get_count_words(self):
         return self.stc.get_count_words()
 
@@ -192,12 +199,21 @@ class Analyzer:
     def stop_work(self):
         self.stop = True
 
+    def get_state(self):
+        return self.state
+
     def work(self):
         if self.name == '':
             self.progress = 0
             return 1
 
+        self.state = 1
         self.text = simpleAPI2.Text(self.name, self)
+        if self.stop:
+            self.state = -1
+            return 2
+        self.state = 2
+
         self.stc.set_text(self.text)
         sents = self.text.sents
         sentences_size = len(sents)
@@ -205,6 +221,7 @@ class Analyzer:
         print(sentences_size)
         for (i, curSent) in enumerate(sents):
             if self.stop:
+                self.state = -1
                 return 2
             self.stc.add_sent(curSent)
             if len(curSent.nGrams) == 0:
@@ -213,4 +230,5 @@ class Analyzer:
             self.progress = 20 + 75 * i / sentences_size
 
             # self.stc.statistic()
+        self.state = 3
         return self.ndf.print_classes(self.text.encoding, self)
