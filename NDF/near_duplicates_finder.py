@@ -199,9 +199,15 @@ class Analyzer:
         self.language = lang
         self.state = 0
         self.groups = []
+        self.popular = []
 
     def get_id(self):
         return self.ID
+
+    def get_popularity(self):
+        if self.popular == []:
+            self.popular = self.stc.get_popularity()
+        return self.popular
 
     def get_groups(self):
         if self.groups == []:
@@ -259,6 +265,7 @@ class Analyzer:
 
         print(sentences_size)
         for (i, curSent) in enumerate(sents):
+            self.progress = 20 + 80 * (i + 1) / sentences_size
             if self.stop:
                 self.state = -1
                 return 2
@@ -266,7 +273,6 @@ class Analyzer:
             if len(curSent.nGrams) == 0:
                 continue
             self.ndf.add_sent(curSent)
-            self.progress = 20 + 80 * i / sentences_size
 
         self.state = 3
         return 0

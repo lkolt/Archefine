@@ -1,4 +1,5 @@
 from tkinter import *
+from tkinter import  scrolledtext as sctx
 
 
 class Reviewer:
@@ -7,7 +8,7 @@ class Reviewer:
         self.root.geometry('700x500')
         self.root.title("Archefine text reviewer")
 
-        self.tx = Text(self.root, font=('times', 12), width=50, height=15, wrap=WORD)
+        self.tx = sctx.ScrolledText(self.root, font=('times', 12), width=50, height=15, wrap=WORD)
         self.tx.pack(expand=YES, fill=BOTH)
 
     def start(self):
@@ -27,4 +28,4 @@ class Reviewer:
 
     def insert_popularity(self, sents):
         for sent in sents:
-            self.tx.insert(END, str(sent[1]) + ": " + str(sent[0]) + '\n')
+            self.tx.insert(END, "Слово \"" + str(sent[1]) + "\" встречается: " + str(sent[0]) + " раз\n")

@@ -8,7 +8,7 @@ class WordFormFinder:
         self.analyzer = analyzer
 
         self.root = Tk()
-        self.root.geometry('200x100')
+        self.root.geometry('200x100+80+200')
         self.root.title("Archefine from finder")
 
         self.entry = Entry(self.root, width=180)

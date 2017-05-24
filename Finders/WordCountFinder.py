@@ -1,6 +1,6 @@
 from tkinter.filedialog import *
 from TextReviwer import TextReviewer
-import threading
+from threading import *
 
 
 class WordCountFinder:
@@ -8,23 +8,36 @@ class WordCountFinder:
         self.analyzer = analyzer
 
         self.root = Tk()
+        self.root.geometry('250x120+620+540')
+        self.root.title("Archefine word count finder")
 
-        self.entry = Entry(self.root)
+        self.label = Label(self.root)
+        self.label["text"] = "Введите слово"
+        self.label.pack()
+
+        self.entry = Entry(self.root, width=80)
         self.entry.pack()
 
         self.but = Button(self.root)
-        self.but["text"] = "Find count"
+        self.but["text"] = "Найти количество вхождений в текст"
         self.but.bind("<Button-1>", self.find_count)
         self.but.pack()
 
-        self.label = Label(self.root)
-        self.label.pack()
+        self.answer = Label(self.root)
+        self.answer.pack()
+
+        self.popular = Button(self.root)
+        self.popular["text"] = "Список встречаемости слов"
+        self.popular.bind("<Button-1>", self.button_popular)
+        self.popular.pack()
 
         self.root.mainloop()
 
     def find_count(self, event):
         word = self.entry.get()
+        self.answer["text"] = "Слово встречается " + str(self.analyzer.stc.get_count(word)) + " раз"
+
+    def button_popular(self, event):
         fnd = TextReviewer.Reviewer()
-        threading.Thread(target=fnd.start)
-        fnd.insert(self.analyzer.stc.get_count(word))
-        #self.label["text"] = str(self.analyzer.stc.get_count(word))
+        fnd.insert_popularity(self.analyzer.get_popularity())
+        Thread(target=fnd.start)

@@ -9,33 +9,35 @@ class ExactDuplicateSentenceFinder:
         self.analyzer = analyzer
 
         self.root = Tk()
+        self.root.geometry('520x100+300+60')
+        self.root.title("Archefine exact duplicate sentence finder")
 
-        self.entry = Entry(self.root)
+        self.label = Label(self.root)
+        self.label["text"] = "Введите предложение:"
+        self.label.pack()
+
+        self.entry = Entry(self.root, width=480)
         self.entry.pack()
 
         self.but = Button(self.root)
-        self.but["text"] = "Find sentence"
+        self.but["text"] = "Найти предложение"
         self.but.bind("<Button-1>", self.find_sentence)
         self.but.pack()
 
-        self.label = Label(self.root)
-        self.label.pack()
+        self.answer = Label(self.root)
+        self.answer.pack()
 
         self.root.mainloop()
 
     def find_sentence(self, event):
         sent = self.entry.get()
-     #   fnd = TextReviewer.Reviewer()
-        ans = []
+        ans = 0
 
-        for (i, cur_sent) in enumerate(self.analyzer.text.sents):
+        for cur_sent in self.analyzer.text.sents:
             if sent == cur_sent.sent:
-                ans.append(i)
-                break
+                ans += 1
 
-      #  threading.Thread(target=fnd.start)
-       # fnd.insert_list(self.analyzer.stc.get_forms(word))
-        print(ans)
+        self.answer["text"] = "Предложение встречается в тексте " + str(ans) + " раз\n"
 
 
 class NearDuplicateSentenceFinder:
@@ -43,17 +45,20 @@ class NearDuplicateSentenceFinder:
         self.analyzer = analyzer
 
         self.root = Tk()
+        self.root.geometry('520x80+300+80')
+        self.root.title("Archefine near duplicate sentence finder")
 
-        self.entry = Entry(self.root)
+        self.label = Label(self.root)
+        self.label["text"] = "Введите предложение:"
+        self.label.pack()
+
+        self.entry = Entry(self.root, width=480)
         self.entry.pack()
 
         self.but = Button(self.root)
-        self.but["text"] = "Find near duplicate"
+        self.but["text"] = "Найти похожие предложения"
         self.but.bind("<Button-1>", self.find_near_duplicate)
         self.but.pack()
-
-        self.label = Label(self.root)
-        self.label.pack()
 
         self.root.mainloop()
 

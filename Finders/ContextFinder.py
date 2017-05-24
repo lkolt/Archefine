@@ -8,12 +8,18 @@ class ContextFinder:
         self.analyzer = analyzer
 
         self.root = Tk()
+        self.root.geometry('200x100+840+200')
+        self.root.title("Archefine context finder")
+
+        self.label = Label(self.root)
+        self.label["text"] = "Введите слово:"
+        self.label.pack()
 
         self.entry = Entry(self.root)
         self.entry.pack()
 
         self.but = Button(self.root)
-        self.but["text"] = "Find context"
+        self.but["text"] = "Найти контекст"
         self.but.bind("<Button-1>", self.find_context)
         self.but.pack()
 

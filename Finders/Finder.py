@@ -17,47 +17,47 @@ class FinderForm:
         self.root.wm_resizable(0, 0)
 
         self.form_finder = Button(self.root)
-        self.form_finder["text"] = "Form finder"
+        self.form_finder["text"] = "Поиск форм слова"
         self.form_finder.bind("<Button-1>", self.button_form_finder)
         self.form_finder.place(x=10, y=10, height=30, width=180)
 
         self.word_count_finder = Button(self.root)
-        self.word_count_finder["text"] = "Word count finder"
+        self.word_count_finder["text"] = "Количество вхождений слова"
         self.word_count_finder.bind("<Button-1>", self.button_word_count)
         self.word_count_finder.place(x=10, y=40, height=30, width=180)
 
         self.context_finder = Button(self.root)
-        self.context_finder["text"] = "Context finder"
+        self.context_finder["text"] = "Поиск контекста"
         self.context_finder.bind("<Button-1>", self.button_context_finder)
         self.context_finder.place(x=10, y=70, height=30, width=180)
 
         self.open_text = Button(self.root)
-        self.open_text["text"] = "Open all text"
+        self.open_text["text"] = "Открыть весь текст"
         self.open_text.bind("<Button-1>", self.button_open_text)
         self.open_text.place(x=10, y=100, height=30, width=180)
 
         self.near_duplicate = Button(self.root)
-        self.near_duplicate["text"] = "Find near duplicates"
+        self.near_duplicate["text"] = "Найти похожие предложения"
         self.near_duplicate.bind("<Button-1>", self.button_near_duplicate)
         self.near_duplicate.place(x=10, y=130, height=30, width=180)
 
         self.exact_duplicate = Button(self.root)
-        self.exact_duplicate["text"] = "Find exact duplicates"
+        self.exact_duplicate["text"] = "Найти предложения"
         self.exact_duplicate.bind("<Button-1>", self.button_exact_duplicate)
         self.exact_duplicate.place(x=10, y=160, height=30, width=180)
 
         self.list_stop_words = Button(self.root)
-        self.list_stop_words["text"] = "List of stop-words"
+        self.list_stop_words["text"] = "Список стоп-слов"
         self.list_stop_words.bind("<Button-1>", self.button_list_stop_words)
         self.list_stop_words.place(x=10, y=190, height=30, width=180)
 
         self.show_results = Button(self.root)
-        self.show_results["text"] = "Show results"
+        self.show_results["text"] = "Группы похожих предложний"
         self.show_results.bind("<Button-1>", self.button_show_results)
         self.show_results.place(x=10, y=220, height=30, width=180)
 
         self.save_results = Button(self.root)
-        self.save_results["text"] = "Save results"
+        self.save_results["text"] = "Сохранить результаты"
         self.save_results.bind("<Button-1>", self.button_save_results)
         self.save_results.place(x=10, y=250, height=30, width=180)
 
