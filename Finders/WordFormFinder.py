@@ -11,16 +11,17 @@ class WordFormFinder:
         self.root.geometry('200x100+80+200')
         self.root.title("Archefine from finder")
 
+        self.label = Label(self.root)
+        self.label["text"] = "Введите слово:"
+        self.label.pack()
+
         self.entry = Entry(self.root, width=180)
         self.entry.pack()
 
         self.but = Button(self.root)
-        self.but["text"] = "Find forms"
+        self.but["text"] = "Найти формы слова"
         self.but.bind("<Button-1>", self.find_forms)
         self.but.pack()
-
-        self.label = Label(self.root)
-        self.label.pack()
 
         self.root.mainloop()
 
