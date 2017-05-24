@@ -61,6 +61,13 @@ class UserInterface:
         self.number_diff_words = Label(root)
         self.number_diff_words.place(x=170, y=220)
 
+        self.number_form_words_label = Label(root)
+        self.number_form_words_label["text"] = "Количество разных корней:"
+        self.number_form_words_label.place(x=10, y=250)
+
+        self.number_form_words = Label(root)
+        self.number_form_words.place(x=170, y=250)
+
         self.cancel = Button(root)
         self.cancel["text"] = "Отмена"
         self.cancel.bind("<Button-1>", self.stop)
@@ -69,11 +76,11 @@ class UserInterface:
 
         self.status_label = Label(root, font="Helvetica 16 bold italic")
         self.status_label["text"] = "Статус:"
-        self.status_label.place(x=10, y=250)
+        self.status_label.place(x=10, y=280)
 
         self.work_label = Label(root, font="Helvetica 16 bold italic")
         self.work_label["text"] = "Ожидаем файл"
-        self.work_label.place(x=10, y=280)
+        self.work_label.place(x=10, y=310)
 
         self.isWork = False
         self.curID = 0
@@ -110,6 +117,7 @@ class UserInterface:
         self.number_stop_words["text"] = self.analyzer.get_count_stop_words()
         self.work_label["text"] = self.state_to_translate(self.analyzer.get_state())
         self.number_diff_words["text"] = self.analyzer.get_count_diff_words()
+        self.number_form_words["text"] = self.analyzer.get_count_form_words()
 
     def set_progress_bar(self):
         last = self.analyzer.get_id()
@@ -121,7 +129,7 @@ class UserInterface:
     def do_analyze(self):
         last = self.analyzer.get_id()
         result = self.analyzer.work()
-        print("WORKER: " + str(self.analyzer.get_id()) + " ended with " + str(result))
+        print("WORKER: " + str(self.analyzer.get_id()) + " end with " + str(result))
         if self.analyzer.get_id() == last:
             self.mpb["value"] = 0
             if self.isWork:

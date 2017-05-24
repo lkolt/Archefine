@@ -4,6 +4,8 @@ from tkinter import *
 class Reviewer:
     def __init__(self):
         self.root = Tk()
+        self.root.geometry('700x500')
+        self.root.title("Archefine text reviewer")
 
         self.tx = Text(self.root, font=('times', 12), width=50, height=15, wrap=WORD)
         self.tx.pack(expand=YES, fill=BOTH)
@@ -22,3 +24,7 @@ class Reviewer:
         for sent in sents:
             self.tx.insert(END, sent.sent)
             self.tx.insert(END, "\n")
+
+    def insert_popularity(self, sents):
+        for sent in sents:
+            self.tx.insert(END, str(sent[1]) + ": " + str(sent[0]) + '\n')

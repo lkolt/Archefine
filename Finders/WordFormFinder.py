@@ -8,8 +8,10 @@ class WordFormFinder:
         self.analyzer = analyzer
 
         self.root = Tk()
+        self.root.geometry('200x100')
+        self.root.title("Archefine from finder")
 
-        self.entry = Entry(self.root)
+        self.entry = Entry(self.root, width=180)
         self.entry.pack()
 
         self.but = Button(self.root)

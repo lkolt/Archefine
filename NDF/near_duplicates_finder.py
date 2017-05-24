@@ -31,6 +31,7 @@ class StatisticCollector:
     def __init__(self, lang):
         self.size = int(1e5 + 7)
         self.table = []
+        self.count_form_words = 0
         self.count_different_words = 0
         self.count_words = 0
         self.count_stop_words = 0
@@ -47,6 +48,7 @@ class StatisticCollector:
             self.count_stop_words = 0
             self.count_different_words = 0
             self.count_words = 0
+            self.count_form_words = 0
             elements = []
             for node in self.table:
                 elements.append(node)
@@ -85,7 +87,9 @@ class StatisticCollector:
     def add_form(self, word):
         init_form = self.text.word_to_stemmed(word)
         pos = self.get_pos(init_form)
-        self.table[pos].forms.add(word)
+        if word not in self.table[pos].forms:
+            self.table[pos].forms.add(word)
+            self.count_form_words += 1
 
     def get_forms(self, word):
         init_form = self.text.word_to_stemmed(word)
@@ -105,6 +109,17 @@ class StatisticCollector:
                 popular.append([self.table[i].count, self.table[i].word])
         popular.sort()
         return popular
+
+    def list_of_stop_words(self):
+        stop_words = []
+        for i in range(self.size):
+            if (not self.table[i].count == 0) and (self.text.is_stop_word(self.table[i].word)):
+                stop_words.append([self.table[i].count, self.table[i].word])
+        stop_words.sort()
+        return stop_words
+
+    def get_count_form_words(self):
+        return self.count_form_words
 
     def get_most_popular_word(self):
         return self.popular_word
@@ -147,20 +162,30 @@ class NearDuplicatesFinder:
             self.classes[best_class].nGrams += cur_sent.nGrams
             self.classes[best_class].sents.append(cur_sent)
 
-    def print_classes(self, encoding, analyzer):
-        classes_size = len(self.classes)
-        with open("curRes.txt", "w", encoding=encoding) as file:
-            for (cur, curClass) in enumerate(self.classes):
-                analyzer.progress = 95 + 5 * (cur + 1) / classes_size
-                if analyzer.stop:
-                    return 2
+    def list_classes(self):
+        ans = []
+        cur = 0
+        for curClass in self.classes:
+            if len(curClass.sents) == 1:
+                continue
+            cur += 1
+            ans.append("========================= CLASS #" + str(cur) + " =============================")
+            for sent in curClass.sents:
+                ans.append(sent.sent)
+            ans.append("*****************************************************************")
+        return ans
+
+    def print_classes(self, encoding, filename):
+        with open(filename, "w", encoding=encoding) as file:
+            cur = 0
+            for curClass in self.classes:
                 if len(curClass.sents) == 1:
                     continue
+                cur += 1
                 file.write("========================= CLASS #%d =============================\n" % cur)
                 file.write('\n'.join(
                     ["(%d) {%d} [%d]: %s" % (sent.index, sent.start, sent.end, sent.sent) for sent in curClass.sents]))
                 file.write("\n*****************************************************************\n")
-        return 0
 
 
 class Analyzer:
@@ -171,12 +196,20 @@ class Analyzer:
         self.ID = ID
         self.ndf = NearDuplicatesFinder()
         self.stc = StatisticCollector(lang)
-        self.text = []
         self.language = lang
         self.state = 0
+        self.groups = []
 
     def get_id(self):
         return self.ID
+
+    def get_groups(self):
+        if self.groups == []:
+            self.groups = self.ndf.list_classes()
+        return self.groups
+
+    def get_count_form_words(self):
+        return self.stc.get_count_form_words()
 
     def set_progress(self, np):
         self.progress = np
@@ -196,11 +229,17 @@ class Analyzer:
     def get_count_stop_words(self):
         return self.stc.get_count_stop_words()
 
+    def get_stop_words(self):
+        return self.stc.list_of_stop_words()
+
     def stop_work(self):
         self.stop = True
 
     def get_state(self):
         return self.state
+
+    def print_groups(self, filename):
+        self.ndf.print_classes(self.text.encoding, filename)
 
     def work(self):
         if self.name == '':
@@ -227,8 +266,7 @@ class Analyzer:
             if len(curSent.nGrams) == 0:
                 continue
             self.ndf.add_sent(curSent)
-            self.progress = 20 + 75 * i / sentences_size
+            self.progress = 20 + 80 * i / sentences_size
 
-            # self.stc.statistic()
         self.state = 3
-        return self.ndf.print_classes(self.text.encoding, self)
+        return 0
