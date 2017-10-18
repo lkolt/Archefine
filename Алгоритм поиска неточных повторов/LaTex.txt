@@ -5,6 +5,7 @@
 \usepackage{ifxetex}
 \usepackage{algorithm}
 \usepackage{algpseudocode}
+\usepackage[a4paper, left=20mm, right=10mm, top=0mm, bottom=20mm]{geometry}
 \ifxetex\usepackage{fontspec}\setmainfont[Ligatures=TeX]{CMU Serif}
   \def\Hello{Алгоритм}
 \else\usepackage[utf8]{inputenc}\usepackage[T2A]{fontenc}
@@ -20,48 +21,90 @@
 
 Функция intersect(A, B) возвращает элементы, которые содерержатся одновременно и в массиве A, и в массиве B. 
 
+Функция unite(A, B) возвращает результат склеивания предложений A и B
+
 Функция size(A) возвращает количество элементов, которые содержатся в массиве A.
 
-Функция lcs(A, B) возвращает наибольшую общую подпоследовательность слов в A и B
+sents - массив предложений.
 
-sent - массив предложений.
+sents[i].nGrams - массив n-грамм в i-ом предложении.
 
-sent[i].nGrams - массив n-грамм в i-ом предложении.
+groups - массив групп
 
-classes - массив классов
+groups[i].nGrams - массив n-грамм в i-ой группе.
 
-classes[i].nGrams - массив n-грамм в i-ом классе.
+groups[i].sent - массив предложений в i-ой группе.
 
-classes[i].sent - массив предложений в i-ом классе.
+groups[i].sent[j].endIndex - номер последнего предложения в j-ом элементе i-ой группы
+
+groups[i].sent[j].startIndex - номер первого предложения в j-ом элементе i-ой группы
+
+was - массив, где i элемент хранит True или False - используется ли sent[i] в какой-нибудь группе или нет(изначально все элементы принимают значение False)
 
 
 \begin{algorithm}
-\caption{Поиск неточных повторов}\label{alg:Example}
+\caption{Algorithm}\label{alg:Example}
 \begin{algorithmic}[1]
- 
-\For{i = 1 to size(sent)}
-    \State curSent = sent[i]
-    \State bestOverlap = 0
-    \State bestClass = NULL
-    \For{j = 1 to size(classes)}
-        \State curClass = classes[j]
-        \State curIntersect = intersect(curSent.nGrams, curClass.nGrams)
-        \State curOverlap = size(curIntersect) / size(curSent.nGrams)
-        \If {curOverlap > bestOverlap}
-            \State bestOverlap = curOverlap
-            \State bestClass = curClass
+
+\Procedure{AddSent}{$group$, $sent$, $index$}
+    \State was[index] = True
+    \State group.nGrams += sent.nGrams
+    \State group.sent += sent
+\EndProcedure
+
+\Procedure{GetOverlap}{$group$, $sent$}
+    \State curIntersect = intersect(sent.nGrams, group.nGrams)
+    \State
+    \Return size(curIntersect) / size(sent.nGrams)
+\EndProcedure
+
+\For{i = 1 to size(sents)}
+    \If {was[i]} 
+        \State continue
+    \EndIf
+    \State was[i] = True
+    \State curSent = sents[i]
+    \State create new group curGroup
+    
+    \For{j = i to size(sents)}
+        \If {size(curGroup.sents) == 0 or GetOverlap(curGroup, sents[j]) > 0.5}
+            \State AddSent(curGroup, sents[j], j)
         \EndIf
     \EndFor
-    \If {bestOverlap < 0.5}
-        \State Создать новый класс newClass
-        \State newClass.nGrams += curSent.nGrams
-        \State newClass.sent += curSent
-    \Else
-        \State bestClass.nGrams += curSent.nGrams
-        \State bestClass.sent += curSent
-    \EndIf
+    
+    \While {size(curGroup.sents) > 1}
+        \State create new group newGroup
+        \For{j = 1 to size(curGroup.sents)}
+            \State sent = curGroup.sents[j]
+            \State index = sent.EndIndex + 1
+            \If{index < size(sents) and not was[index]}
+                \State newSent = unite(sent, sents[index])
+                
+                \If{size(newGroup.sents) == 0 or GetOverlap(newGroup, newSent) > 0.5}
+                    \State AddSent(newGroup, newSent, index)
+                    \State continue
+                \EndIf
+            \EndIf
+            \For{k = sent.startIndex to sent.endIndex}
+                \State was[k] = False
+            \EndFor
+        \EndFor
+        
+        \If{size(newGroup.sent) < 2}
+            \State for all S in newGroup.sents set S flags in was as False
+            \State break
+        \EndIf
+        
+        \State curGroup = newGroup
+    \EndWhile
+    
+    \State groups += curGroup
+    \State for all S in curGroup.sents set S flags in was as True
 \EndFor 
  
+ \State for all G in groups such that size(G) = 1, groups -= G
+ \State
+ \Return group
 \end{algorithmic}
 \end{algorithm}
 

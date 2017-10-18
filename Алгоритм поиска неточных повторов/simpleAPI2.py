@@ -9,7 +9,7 @@ import re
 
 
 # This can be varied
-language = 'russian'.lower()
+language = 'english'.lower()
 removeStops = True  # `= set()` for not removing stopwords
 puncts = set('.,!?')
 default_encodings = ["utf-8", "cp1251"]
@@ -47,8 +47,9 @@ def wordsToStemmed(sent: Iterator[str]) -> List[str]:
 class Sentence:
     stemmer = Stemmer()
 
-    def __init__(self, index: int, sent: str, start: int, end: int):
-        self.index = index
+    def __init__(self, startIndex: int, endIndex: int, sent: str, start: int, end: int):
+        self.startIndex = startIndex
+        self.endIndex = endIndex
         self.sent = sent
         self.words = self.sentToWords()
         self.nGrams = list(trigrams(self.words))
@@ -85,4 +86,4 @@ class Text:
             index = 0
             for (num, sent) in enumerate(sents):
                 index = text.find(sent, index)
-                yield Sentence(num, re.sub("\s+", ' ', sent), index, index + len(sent))
+                yield Sentence(num, num, re.sub("\s+", ' ', sent), index, index + len(sent))
