@@ -1,4 +1,5 @@
 from simpleAPI2 import *
+import json
 
 
 class Group:
@@ -37,11 +38,11 @@ def set_sent_bool(sentence, val, use):
         use[k] = val
 
 
-#name = "drm-internals.txt"
-#name = "gazprom-corrected-dluciv.pxml"
+# name = "drm-internals.txt"
+# name = "gazprom-corrected-dluciv.pxml"
 name = "Linux_Kernel_Documentation.pxml"
-#name = "DocBook_Definitive_Guide.pxml"
-#name = "rus sample.txt"
+# name = "DocBook_Definitive_Guide.pxml"
+# name = "rus sample.txt"
 
 text = Text("resources/" + name)
 sents = text.sents
@@ -87,12 +88,30 @@ for (i, curSent) in enumerate(sents):
         set_bool(curClass, True, was)
 
 cur = 0
+jsonArr = []
 with open(name + " result.txt", "w", encoding=text.encoding) as file:
     for curClass in classes:
-       # print("print")
+        # print("print")
         if len(curClass.sents) < 2:
             continue
         cur += 1
         file.write("========================= CLASS #%d =============================\n" % cur)
-        file.write('\n'.join(["(%d) <%d> {%d} [%d]: %s" % (sent.startIndex, sent.endIndex, sent.start, sent.end, sent.sent) for sent in curClass.sents]))
+        file.write('\n'.join(
+            ["(%d) <%d> {%d} [%d]: %s" % (sent.startIndex, sent.endIndex, sent.start, sent.end, sent.sent) for sent in
+             curClass.sents]))
         file.write("\n*****************************************************************\n")
+
+        curJson = {'group_id': cur}
+        ar = []
+        for sent in curClass.sents:
+            data = {'start_index': sent.start, 'end_index': sent.end, 'text': sent.sent}
+            ar.append(data)
+        curJson['duplicates'] = ar
+
+        jsonArr.append(curJson)
+
+jsonRes = {'groups': jsonArr}
+js = json.dumps(jsonRes, ensure_ascii=False)
+
+with open(name + " JSONResult.txt", "w", encoding=text.encoding) as file:
+    file.write(js)
