@@ -40,14 +40,21 @@ def set_sent_bool(sentence, val, use):
 
 # name = "drm-internals.txt"
 # name = "gazprom-corrected-dluciv.pxml"
-name = "Linux_Kernel_Documentation.pxml"
+# name = "Linux_Kernel_Documentation.pxml"
 # name = "DocBook_Definitive_Guide.pxml"
 # name = "rus sample.txt"
+name = "LKD.txt"
+# name = "DocBook.txt"
 
 text = Text("resources/" + name)
 sents = text.sents
 classes = []
 was = [False for i in range(len(sents))]
+
+with open(name + " text.txt", "w", encoding=text.encoding) as file:
+    for sent in sents:
+        file.write("{" + str(sent.startIndex) + "}:   " + sent.sent + "\n")
+
 
 for (i, curSent) in enumerate(sents):
     print("i now is: " + str(i) + " out of " + str(len(sents)))
@@ -61,7 +68,14 @@ for (i, curSent) in enumerate(sents):
             if len(newSent.nGrams) == 0:
                 continue
 
-            if len(curClass.nGrams) == 0 or get_overlap(curClass, newSent) > 0.5:
+            flag = True
+            for classSent in curClass.sents:
+                flag &= (get_overlap(classSent, newSent) > 0.5)
+                # flag &= (get_overlap(newSent, classSent) > 0.5)
+                if not flag:
+                    break
+
+            if flag:
                 add_sent(curClass, newSent, was, j)
 
         while len(curClass.sents) > 1:
@@ -72,7 +86,14 @@ for (i, curSent) in enumerate(sents):
                 if not (index == len(sents) or was[index]):
                     newSent = unite(sent, sents[index])
 
-                    if len(newClass.nGrams) == 0 or get_overlap(newClass, newSent) > 0.5:
+                    flag = True
+                    for classSent in newClass.sents:
+                        flag &= (get_overlap(classSent, newSent) > 0.5)
+                        # flag &= (get_overlap(newSent, classSent) > 0.5)
+                        if not flag:
+                            break
+
+                    if flag:
                         add_sent(newClass, newSent, was, index)
                         continue
 
