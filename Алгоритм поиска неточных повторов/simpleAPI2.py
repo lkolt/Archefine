@@ -9,6 +9,8 @@ import re
 
 
 # This can be varied
+import pandocTest
+
 language = 'english'.lower()
 #language = 'russian'.lower()
 removeStops = True  # `= set()` for not removing stopwords
@@ -48,7 +50,7 @@ def wordsToStemmed(sent: Iterator[str]) -> List[str]:
 class Sentence:
     stemmer = Stemmer()
 
-    def __init__(self, startIndex: int, endIndex: int, sent: str, start: int, end: int):
+    def __init__(self, startIndex: int, endIndex: int, sent: str, start: int, end: int, divider):
         self.startIndex = startIndex
         self.endIndex = endIndex
         self.sent = sent
@@ -56,6 +58,7 @@ class Sentence:
         self.nGrams = list(trigrams(self.words))
         self.start = start
         self.end = end
+        self.divider = divider
 
     def sentToWords(self) -> List[str]:
         # FIXME: remove_stops . remove_puncts ~> remove_sth(_, stops | puncts)
@@ -83,8 +86,20 @@ class Text:
         with open(filename, mode='rb') as file:
             text = decode(file.read()).replace('\n', ' ')
             # text = re.sub("\s+", ' ', text)  # "hi     man" ~> "hi man"
-            sents = sent_tokenize(text)
+
+            splitted = text.split(pandocTest.divider)
+
             index = 0
-            for (num, sent) in enumerate(sents):
-                index = text.find(sent, index)
-                yield Sentence(num, num, re.sub("\s+", ' ', sent), index, index + len(sent))
+            index_sum = 0
+            num = 0
+            for elem in splitted:
+                sents = sent_tokenize(elem)
+
+                for sent in sents:
+                    index = elem.find(sent, index)
+                    num += 1
+                    yield Sentence(num, num, re.sub("\s+", ' ', sent), index_sum + index, index_sum + index + len(sent),    # FIXME
+                                   False)
+
+                index_sum += len(elem) + len(pandocTest.divider)   # FIXME
+                yield Sentence(0, 0, "", 0, 0, True)

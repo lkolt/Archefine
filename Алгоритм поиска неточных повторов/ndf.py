@@ -13,7 +13,7 @@ def intersect(sent1, sent2):
 
 
 def unite(sent1, sent2):
-    return Sentence(sent1.startIndex, sent2.endIndex, sent1.sent + " " + sent2.sent, sent1.start, sent2.end)
+    return Sentence(sent1.startIndex, sent2.endIndex, sent1.sent + " " + sent2.sent, sent1.start, sent2.end, False)
 
 
 def add_sent(group, sentence, use, idx):
@@ -43,13 +43,17 @@ def set_sent_bool(sentence, val, use):
 # name = "Linux_Kernel_Documentation.pxml"
 # name = "DocBook_Definitive_Guide.pxml"
 # name = "rus sample.txt"
-name = "LKD.txt"
+# name = "LKD.txt"
 # name = "DocBook.txt"
+name = "kek.txt"
+
 
 text = Text("resources/" + name)
 sents = text.sents
 classes = []
 was = [False for i in range(len(sents))]
+
+minOverlap = 0.3
 
 with open(name + " text.txt", "w", encoding=text.encoding) as file:
     for sent in sents:
@@ -58,20 +62,20 @@ with open(name + " text.txt", "w", encoding=text.encoding) as file:
 
 for (i, curSent) in enumerate(sents):
     print("i now is: " + str(i) + " out of " + str(len(sents)))
-    if not was[i]:
+    if (not was[i]) and (not curSent.divider):
         was[i] = True
 
         curClass = Group([], [])
 
         for j in range(i, len(sents)):
             newSent = sents[j]
-            if len(newSent.nGrams) == 0:
+            if len(newSent.nGrams) == 0 or newSent.divider:
                 continue
 
             flag = True
             for classSent in curClass.sents:
-                flag &= (get_overlap(classSent, newSent) > 0.5)
-                # flag &= (get_overlap(newSent, classSent) > 0.5)
+                flag &= (get_overlap(classSent, newSent) > minOverlap)
+                # flag &= (get_overlap(newSent, classSent) > minOverlap)
                 if not flag:
                     break
 
@@ -83,13 +87,13 @@ for (i, curSent) in enumerate(sents):
 
             for sent in curClass.sents:
                 index = sent.endIndex + 1
-                if not (index == len(sents) or was[index]):
+                if not (index == len(sents) or was[index] or sents[index].divider):
                     newSent = unite(sent, sents[index])
 
                     flag = True
                     for classSent in newClass.sents:
-                        flag &= (get_overlap(classSent, newSent) > 0.5)
-                        # flag &= (get_overlap(newSent, classSent) > 0.5)
+                        flag &= (get_overlap(classSent, newSent) > minOverlap)
+                        # flag &= (get_overlap(newSent, classSent) > minOverlap)
                         if not flag:
                             break
 
