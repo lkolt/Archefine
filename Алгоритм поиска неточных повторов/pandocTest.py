@@ -1,6 +1,5 @@
 from pandocfilters import stringify, Str, applyJSONFilters, walk, toJSONFilter, Para, Header, Space, toJSONFilters, \
-    BulletList, Strong
-
+    BulletList, Strong, RawBlock, RawInline
 
 divider = "A%@%@%@%@@@@%@"
 
@@ -61,7 +60,7 @@ def bullet_list_to_para(key, val, fmt, meta):
 def ordered_list_to_para(key, val, fmt, meta):
     if key == 'OrderedList':
 
-        [attr, v] = val
+        [_, v] = val
         res = []
         for lst in v:
             for snd in lst:
@@ -108,6 +107,20 @@ def deblockquoted(key, val, fmt, meta):
         return res
 
 
+def remove_html(key, val, fmt, meta):
+    if key == 'RawBlock':
+        [attr, block] = val
+        if attr == 'html':
+            return Para([])
+        return RawBlock(attr, block)
+
+    if key == 'RawInline':
+        [attr, block] = val
+        if attr == 'html':
+            return Str("")
+        return RawInline(attr, block)
+
+
 if __name__ == "__main__":
     toJSONFilters([remove_code, add_marks_to_header, remove_links, deflists, bullet_list_to_para, ordered_list_to_para,
-                   deemph, dediv, deblockquoted])
+                   deemph, dediv, deblockquoted, remove_html])
